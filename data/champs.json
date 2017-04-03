@@ -1,0 +1,74 @@
+{
+  "champs": [
+    {
+      "identifiant": "1",
+      "nom": "Nom et prénom",
+      "type": "texte_nomprenom"
+    },
+    {
+      "identifiant": "2",
+      "nom": "Date de naissance",
+      "type": "date"
+    },
+    {
+      "identifiant": "3",
+      "nom": "Adresse",
+      "type": "texte_adresse"
+    },
+    {
+      "identifiant": "4",
+      "nom": "Numéro de téléphone",
+      "type": "texte_telephone"
+    },
+    {
+      "identifiant": "5",
+      "nom": "Nationalité",
+      "type": "texte_nationalite"
+    },
+    {
+      "identifiant": "6",
+      "nom": "Carte d'identité",
+      "type": "fichier"
+    },
+    {
+      "identifiant": "7",
+      "nom": "Passeport",
+      "type": "fichier"
+    },
+    {
+      "identifiant": "8",
+      "nom": "Carte de séjour",
+      "type": "fichier"
+    },
+    {
+      "identifiant": "9",
+      "nom": "Permis B",
+      "type": "vehicule_fichier"
+    },
+    {
+      "identifiant": "10",
+      "nom": "Carte grise",
+      "type": "vehicule_fichier"
+    },
+    {
+      "identifiant": "11",
+      "nom": "Certificat d'assurance",
+      "type": "vehicule_fichier"
+    },
+    {
+      "identifiant": "12",
+      "nom": "Immatriculation",
+      "type": "vehicule_texte"
+    },
+    {
+      "identifiant": "13",
+      "nom": "Dates de la visite",
+      "type": "date_periode"
+    },
+    {
+      "identifiant": "14",
+      "nom": "Remarques",
+      "type": "texte"
+    }
+  ]
+}

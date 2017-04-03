@@ -1,0 +1,179 @@
+{
+  "invitations": [
+    {
+      "identifiant": "fUU1c5svSy",
+      "password": "abcd1234",
+      "email": "david.delemotte@gmail.com",
+      "nom": "Delemotte",
+      "prenom": "David",
+      "identifiantProjet": "2",
+      "identifiantParent": "6fW1cYDLHz",
+      "historique": [
+        {
+          "date": 1490107493246,
+          "type": "RECEPTION_INVITATION"
+        },
+        {
+          "date": 1490107593246,
+          "type": "ENVOI_BIODATAS"
+        },
+        {
+          "date": 1490107793246,
+          "type": "VALIDATION_BIODATAS"
+        }
+      ]
+    },
+    {
+      "identifiant": "7fW1cYDLHz",
+      "password": "abcd1234",
+      "email": "david.delemotte@gmail.com",
+      "nom": "Delemotte",
+      "prenom": "David",
+      "identifiantProjet": "1",
+      "identifiantParent": "bd108985-7951-4e5e-bcd7-c65a64d1786d",
+      "historique": [
+        {
+          "date": 1490107493246,
+          "type": "RECEPTION_INVITATION"
+        },
+        {
+          "date": 1490107593246,
+          "type": "ENVOI_BIODATAS"
+        },
+        {
+          "date": 1490107793246,
+          "type": "VALIDATION_BIODATAS"
+        },
+        {
+          "date": 1490108593246,
+          "type": "TRANSFERT_AUTORITES"
+        },
+        {
+          "date": 1491150985975,
+          "type": "DEMANDE_ACCESS_KO"
+        }
+      ]
+    },
+    {
+      "identifiant": "9yW1cbD9Si",
+      "password": "abcd1234",
+      "email": "test@gmail.com",
+      "nom": "Nom",
+      "prenom": "Prénom",
+      "identifiantProjet": "1",
+      "identifiantParent": "6fW1cYDLHz",
+      "historique": [
+        {
+          "date": 1490107493246,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "10UU1c5svSy",
+      "password": "abcd1234",
+      "email": "david.delemotte@gmail.com",
+      "nom": "Delemotte",
+      "prenom": "David",
+      "identifiantProjet": "4",
+      "identifiantParent": "6fW1cYDLHz",
+      "historique": []
+    },
+    {
+      "identifiant": "6fmW1cYDLHz",
+      "password": "abcd1234",
+      "email": "david.delemotte@gmail.com",
+      "nom": "Delemotte",
+      "prenom": "David",
+      "identifiantProjet": "2",
+      "identifiantParent": "",
+      "historique": []
+    },
+    {
+      "identifiant": "fUU1cg5svSy",
+      "password": "abcd1234",
+      "email": "david.delemotte@gmail.com",
+      "nom": "Delemotte",
+      "prenom": "David",
+      "identifiantProjet": "2",
+      "identifiantParent": "6fW1cYDLHz",
+      "historique": []
+    },
+    {
+      "identifiant": "bd108985-7951-4e5e-bcd7-c65a64d1786d",
+      "password": "ff29d3ba-4e0a-4679-ae7f-d55e1314109d",
+      "email": "dffsdfsds",
+      "nom": "e",
+      "prenom": "e",
+      "identifiantProjet": "1",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1490107493246,
+          "type": "RECEPTION_INVITATION"
+        },
+        {
+          "date": 1490157493246,
+          "type": "ENVOI_BIODATAS"
+        },
+        {
+          "date": 1491151928420,
+          "type": "VALIDATION_BIODATAS"
+        },
+        {
+          "date": 1491202348646,
+          "type": "TRANSFERT_AUTORITES"
+        },
+        {
+          "date": 1491205584190,
+          "type": "DEMANDE_ACCESS_OK"
+        }
+      ]
+    },
+    {
+      "identifiant": "2c510210-3a25-4e21-8fa9-bd6ce74a5af6",
+      "password": "f2232836-bf23-4b03-b7bb-3fc77492e26c",
+      "email": "test@test.fr",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "d8e86f2b-5a44-43e3-858d-e83929583089",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1491163355283,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "87f9862a-a21d-4dd5-bf8c-58bd9052816a",
+      "password": "611d6e61-49e5-44e6-b9c9-560e14b6fed1",
+      "email": "fklsdf@sdfds.fr",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "1",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1491206330807,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "0a0c1a1f-7646-43bd-a65c-bbb22007a521",
+      "password": "49d24e7e-9d33-4ac1-9aba-2c144297cca0",
+      "email": "sggf@dgdfg.gt",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "1",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1491224243092,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "rappels": [
+    {
+      "nbJours": 2
+    },
+    {
+      "nbJours": 15
+    },
+    {
+      "nbJours": 7
+    },
+    {
+      "nbJours": 48
+    }
+  ],
+  "configuration": {
+    "activation": true
+  }
+}

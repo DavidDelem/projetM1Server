@@ -1,0 +1,214 @@
+{
+  "profils": [
+    {
+      "identifiant": "1",
+      "nom": "profil A",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "2",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "3",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "4",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "7",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "8",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "10",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "11",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "12",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "13",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "14",
+          "obligatoire": true
+        }
+      ]
+    },
+    {
+      "identifiant": "2",
+      "nom": "profil C",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "3",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "4",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "7",
+          "obligatoire": true
+        }
+      ]
+    },
+    {
+      "identifiant": "01c09824-32ef-4291-83f9-47e66bfd6913",
+      "nom": "Visite scolaire",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "2",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "3",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "4",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "7",
+          "obligatoire": false
+        }
+      ]
+    },
+    {
+      "identifiant": "f8efbe17-a15c-4956-be37-398389a4641a",
+      "nom": "Accès de longue durée",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "2",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "3",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "4",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "5",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "9",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "10",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "12",
+          "obligatoire": false
+        }
+      ]
+    },
+    {
+      "identifiant": "93bc5065-4311-494c-b029-311cd9e78ad7",
+      "nom": "Visite ponctuelle",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "5",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": false
+        }
+      ]
+    },
+    {
+      "identifiant": "a5e8ff87-55ce-4ed1-a407-bc354316e446",
+      "nom": "Groupe de visiteurs étrangers",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "2",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "3",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "4",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "5",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "7",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "8",
+          "obligatoire": false
+        }
+      ]
+    },
+    {
+      "identifiant": "94963cff-b34c-4ea8-a78a-fcbee0c83d93",
+      "nom": "test",
+      "champs": {}
+    },
+    {
+      "identifiant": "3dc352c2-a086-46ee-a03c-698f453f92a8",
+      "nom": "rrrrr",
+      "champs": {}
+    }
+  ]
+}
