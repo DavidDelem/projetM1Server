@@ -29,6 +29,10 @@ var getByInvitationParent = function(identifiantParent, callback) {
     callback(db.get('invitations').filter({identifiantParent: identifiantParent}).sortBy('date').value());
 }
 
+var getByEmail = function(email, callback) {
+    callback(db.get('invitations').filter({email: email}).value());
+}
+
 var add = function (identifiantProjet, email, identifiantParent, callback) {
     var historique = {
         date: Date.now(),
@@ -131,5 +135,7 @@ module.exports = {
     /* Suppression d'un élément de l'historique */
     removeHistorique: removeHistorique,
     /* Annulation de la dernier action */
-    retourHistorique: retourHistorique
+    retourHistorique: retourHistorique,
+    /*oublie du mot de pass */
+    getByEmail: getByEmail
 }

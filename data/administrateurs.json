@@ -7,6 +7,11 @@
     {
       "identifiant": "test@gmail.com",
       "password": "abcd1234"
+    },
+    {
+      "identifiant": "nader.akoum@hotmail.com",
+      "password": "abcd1234"
     }
   ]
 }
+

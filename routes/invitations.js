@@ -7,7 +7,7 @@ module.exports = function(app) {
     var invitationsDAO = require('../dao/invitationsjson.js');
     var projetsDAO = require('../dao/projets.js');
     var profilsDAO = require('../dao/profilsformulaires.js');
-    var mail = require('../mail/mail.js')
+    var mail = require('../mail/mail.js');
         
     var auth = require("../authentification/auth.js")();  
     var cfg = require("../authentification/config.js");  
