@@ -167,8 +167,8 @@
       ]
     },
     {
-      "identifiant": "a5e8ff87-55ce-4ed1-a407-bc354316e446",
-      "nom": "Groupe de visiteurs étrangers",
+      "identifiant": "865752ba-db62-49a0-b54d-43be87842051",
+      "nom": "Exemple de profil",
       "champs": [
         {
           "identifiant": "1",
@@ -184,11 +184,53 @@
         },
         {
           "identifiant": "4",
-          "obligatoire": true
+          "obligatoire": false
         },
         {
           "identifiant": "5",
           "obligatoire": true
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "7",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "10",
+          "obligatoire": false
+        }
+      ]
+    },
+    {
+      "identifiant": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "nom": "Totalité des champs",
+      "champs": [
+        {
+          "identifiant": "1",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "2",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "3",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "4",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "5",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": false
         },
         {
           "identifiant": "7",
@@ -197,18 +239,32 @@
         {
           "identifiant": "8",
           "obligatoire": false
+        },
+        {
+          "identifiant": "9",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "10",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "11",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "12",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "13",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "14",
+          "obligatoire": false
         }
       ]
-    },
-    {
-      "identifiant": "94963cff-b34c-4ea8-a78a-fcbee0c83d93",
-      "nom": "test",
-      "champs": {}
-    },
-    {
-      "identifiant": "3dc352c2-a086-46ee-a03c-698f453f92a8",
-      "nom": "rrrrr",
-      "champs": {}
     }
   ]
 }
