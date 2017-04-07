@@ -29,8 +29,6 @@ require('./routes/profilsformulaires.js')(app);
 require('./routes/formulaires.js')(app);
 require('./routes/delegation.js')(app);
 
-
-
 // CRON
 require('./cron');
 
