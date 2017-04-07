@@ -1,3 +1,6 @@
+const nunjucks = require( 'nunjucks' );
+nunjucks.configure('mail/templates', { autoescape: true });
+
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -19,25 +22,24 @@ var sendReponse = function(email, nbjours, callback) {
 
 var sendMail = function(email, text, callback) {
 
-// create reusable transporter object using the default SMTP transport
-
-
-// setup email data with unicode symbols
-let mailOptions = {
-    from: 'biodataisen@gmail.com', // sender address
-    to : email, // list of receivers
-    subject: 'Hello ✔', // Subject line
-   
-    html: text// html body
-};
-
-// send mail with defined transport object
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.log(error);
-    }
-    console.log('Message %s sent: %s', info.messageId, info.response);
-});
+    
+    var mailContentHtml = nunjucks.render('invitation.html', { foo: 'bar' });
+    console.log(mailContentHtml);
+//    
+//    let mailOptions = {
+//        from: 'biodataisen@gmail.com', // sender address
+//        to : email, // list of receivers
+//        subject: 'Hello ✔', // Subject line
+//        html: text// html body
+//    };
+//
+//// send mail with defined transport object
+//transporter.sendMail(mailOptions, (error, info) => {
+//    if (error) {
+//        return console.log(error);
+//    }
+//    console.log('Message %s sent: %s', info.messageId, info.response);
+//});
 
     callback("ok");
 }

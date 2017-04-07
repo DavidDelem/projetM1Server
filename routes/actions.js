@@ -28,7 +28,7 @@ module.exports = function(app) {
     
     app.put("/invitations/:invitation/refusbiodatas", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
-            invitationsDAO.addToHistorique(req.params.invitation, 'REFUS_BIOTATAS', function(historique) {
+            invitationsDAO.addToHistorique(req.params.invitation, 'REFUS_BIODATAS', function(historique) {
                 /* ENVOI MAIL */
                 res.json(historique);
             });

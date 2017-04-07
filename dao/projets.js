@@ -3,13 +3,13 @@ const db = low('data/projets.json', {storage: require('lowdb/lib/storages/file-a
 var uuid = require('node-uuid');
 var moment = require('moment');
 
-var getAll = function(dateDebut, dateFin, callback) {
-    //callback(db.get('projets').cloneDeep().value());
-    dateDebut = moment(dateDebut, 'DD/MM/YYYY').format('YYYY-MM-DD');
-    dateFin = moment(dateFin, 'DD/MM/YYYY').format('YYYY-MM-DD');
-
-    callback(db.get('projets').filter(projet => moment(moment(projet.dateCreation, 'DD/MM/YYYY').format('YYYY-MM-DD')).isSameOrAfter(dateDebut)
-                                      && moment(moment(projet.dateCreation, 'DD/MM/YYYY').format('YYYY-MM-DD')).isSameOrBefore(dateFin)).cloneDeep().value());
+var getAll = function(tris, dateDebut, dateFin, callback) {
+    if(tris == 'dateLimite') {
+        callback(db.get('projets').filter(projet => projet.dateLimite - 10 >= dateDebut && projet.dateLimite <= dateFin).cloneDeep().sortBy('dateLimite').value());
+    } else {
+        console.log('Tris par date de Création');
+        callback(db.get('projets').filter(projet => projet.dateCreation >= dateDebut && projet.dateCreation <= (dateFin + 10)).cloneDeep().sortBy('dateCreation').value());
+    }
 }
 
 var getByIdentifiant = function(identifiant, callback) {
@@ -17,12 +17,15 @@ var getByIdentifiant = function(identifiant, callback) {
 }
 
 var add = function (nom, dateLimite, profil, callback) {
-    var dateCreation = moment().format('DD/MM/YYYY');
+    var dateCreation = Date.now();
     db.get('projets').push({ identifiant: uuid.v4(),
                              nom: nom,
                              dateCreation: dateCreation,
                              dateLimite: dateLimite,
-                             profil: profil}).write().then(function(projets){
+                             profil: profil,
+                             rappels: true,
+                             delegation: true
+                           }).write().then(function(projets){
         callback(projets);
     });
 }
@@ -40,6 +43,30 @@ var remove = function(identifiant, callback) {
         callback(projets);
     });
 }
+
+var activerRappels = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ rappels: true }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
+
+var desactiverRappels = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ rappels: false }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
+
+var activerDelegation = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ delegation: true }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
+
+var desactiverDelegation = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ delegation: false }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
     
 module.exports = {
     /* Récupération de la liste de tous les projets */
@@ -51,5 +78,9 @@ module.exports = {
     /* Mise à jours de la date limite, du nom et du profil associé à un projet à partir de son identifiant */
     updateInfos: updateInfos,
     /* Suppression d'un projet à partir de son identifiant */
-    remove: remove
+    remove: remove,
+    activerRappels: activerRappels,
+    desactiverRappels: desactiverRappels,
+    activerDelegation: activerDelegation,
+    desactiverDelegation: desactiverDelegation
 }

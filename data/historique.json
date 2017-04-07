@@ -1,0 +1,58 @@
+{
+  "historique": [
+    {
+      "identifiant": "1",
+      "date": 1490107493246,
+      "type": "ENVOI_BIODATAS",
+      "lu": false,
+      "details": {
+        "projet": "identifiantProjet"
+      }
+    },
+    {
+      "identifiant": "2",
+      "date": 1490107893246,
+      "type": "DELEGATION_INVITATION",
+      "lu": false,
+      "details": {
+        "projet": "identifiantProjet"
+      }
+    },
+    {
+      "identifiant": "3",
+      "date": 1490209493246,
+      "type": "DATE_LIMITE_ATTEINTE",
+      "lu": false,
+      "details": {
+        "projet": "identifiantProjet"
+      }  
+    },
+    {
+      "identifiant": "4",
+      "date": 1493107493246,
+      "type": "TOUTES_BIODATAS_ENVOYEES",
+      "lu": false,
+      "details": {
+        "projet": "identifiantProjet"
+      }
+    },
+    {
+      "identifiant": "5",
+      "date": 1493107493246,
+      "type": "TOUTES_BIODATAS_ENVOYEES",
+      "lu": true,
+      "details": {
+        "projet": "identifiantProjet"
+      }
+    },
+    {
+      "identifiant": "5",
+      "date": 1493107493246,
+      "type": "TOUTES_BIODATAS_ENVOYEES",
+      "lu": false,
+      "details": {
+        "projet": "identifiantProjet"
+      }
+    }
+  ]
+}

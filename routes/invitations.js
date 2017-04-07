@@ -23,8 +23,8 @@ module.exports = function(app) {
     
     app.get("/projets", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
-            if(req.query.dateDebut && req.query.dateFin) {
-                projetsDAO.getAll(req.query.dateDebut, req.query.dateFin, function(projets) {
+            if(req.query.tris && req.query.dateDebut && req.query.dateFin) {
+                projetsDAO.getAll(req.query.tris, req.query.dateDebut, req.query.dateFin, function(projets) {
                     async.eachSeries(projets, function iteratee(projet, callback) {
                         invitationsDAO.getByProjet(projet.identifiant, function(invitations) {
 
@@ -50,7 +50,7 @@ module.exports = function(app) {
 
                         });
                     }, function done() {
-                        res.json(projets);
+                        res.json(projets.reverse());
                     });
                 });
             } else {
@@ -68,7 +68,9 @@ module.exports = function(app) {
             if(req.params.projet) {
                 projetsDAO.getByIdentifiant(req.params.projet, function(detail) {
                     profilsDAO.getOne(detail.profil, function(profil) {
-                        detail.nomProfil = profil.nom;
+                        if(profil && profil.nom) {
+                            detail.nomProfil = profil.nom;
+                        }
                         res.json(detail);
                     });
                 }); 
@@ -85,13 +87,59 @@ module.exports = function(app) {
     app.put("/projets/:projet", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
             if(req.params.projet && req.body.nom && req.body.dateLimite && req.body.profil) {
-                var dateLimite = moment(req.body.dateLimite, 'YYYY-MM-DD').format('DD/MM/YYYY');
-                projetsDAO.updateInfos(req.params.projet, req.body.nom, dateLimite, req.body.profil, function(projet) {
+                projetsDAO.updateInfos(req.params.projet, req.body.nom, parseInt(req.body.dateLimite), req.body.profil, function(projet) {
                    res.json(projet)
                 }); 
             } else {
                 res.json(400);
             }
+        } else {
+            res.sendStatus(401);
+        }
+    });
+    
+    
+    /* Activation et désactivation des rappels pour le projet */
+    
+    app.put("/projets/:projet/rappels", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'administrateur') {
+            if(req.body.rappels) {
+                if(req.body.rappels == "true") {   
+                    projetsDAO.activerRappels(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                } else {
+                    projetsDAO.desactiverRappels(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                }
+            } else {
+                res.sendStatus(400);
+            }
+            
+        } else {
+            res.sendStatus(401);
+        }
+    });
+    
+    /* Activation et désactivation de la délégation d'invitation pour le projet */
+    
+    app.put("/projets/:projet/delegation", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'administrateur') {
+            if(req.body.delegation) {
+                if(req.body.delegation == "true") {   
+                    projetsDAO.activerDelegation(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                } else {
+                    projetsDAO.desactiverDelegation(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                }
+            } else {
+                res.sendStatus(400);
+            }
+            
         } else {
             res.sendStatus(401);
         }
@@ -137,7 +185,7 @@ module.exports = function(app) {
     app.post("/projets", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
             if(req.body.projet && req.body.dateLimite && req.body.profil) { 
-                projetsDAO.add(req.body.projet, req.body.dateLimite, req.body.profil, function(projets) {
+                projetsDAO.add(req.body.projet, parseInt(req.body.dateLimite), req.body.profil, function(projets) {
                     res.json(projets);
                 }); 
             } else {

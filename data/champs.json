@@ -8,7 +8,7 @@
     {
       "identifiant": "2",
       "nom": "Date de naissance",
-      "type": "date"
+      "type": "texte_date"
     },
     {
       "identifiant": "3",
@@ -23,22 +23,22 @@
     {
       "identifiant": "5",
       "nom": "Nationalité",
-      "type": "texte_nationalite"
+      "type": "identite_nationalite"
     },
     {
       "identifiant": "6",
       "nom": "Carte d'identité",
-      "type": "fichier"
+      "type": "identite_fichier"
     },
     {
       "identifiant": "7",
       "nom": "Passeport",
-      "type": "fichier"
+      "type": "identite_fichier"
     },
     {
       "identifiant": "8",
       "nom": "Carte de séjour",
-      "type": "fichier"
+      "type": "identite_fichier"
     },
     {
       "identifiant": "9",
@@ -63,12 +63,12 @@
     {
       "identifiant": "13",
       "nom": "Dates de la visite",
-      "type": "date_periode"
+      "type": "texte_date_periode"
     },
     {
       "identifiant": "14",
       "nom": "Remarques",
-      "type": "texte"
+      "type": "texte_textarea"
     }
   ]
 }
