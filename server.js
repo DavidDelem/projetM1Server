@@ -27,6 +27,8 @@ require('./routes/historiquedossier.js')(app);
 require('./routes/rappels.js')(app);
 require('./routes/profilsformulaires.js')(app);
 require('./routes/formulaires.js')(app);
+require('./routes/delegation.js')(app);
+
 
 
 // CRON
