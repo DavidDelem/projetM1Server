@@ -98,6 +98,53 @@ module.exports = function(app) {
         }
     });
     
+    
+    /* Activation et désactivation des rappels pour le projet */
+    
+    app.put("/projets/:projet/rappels", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'administrateur') {
+            if(req.body.rappels) {
+                if(req.body.rappels == "true") {   
+                    projetsDAO.activerRappels(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                } else {
+                    projetsDAO.desactiverRappels(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                }
+            } else {
+                res.sendStatus(400);
+            }
+            
+        } else {
+            res.sendStatus(401);
+        }
+    });
+    
+    /* Activation et désactivation de la délégation d'invitation pour le projet */
+    
+    app.put("/projets/:projet/delegation", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'administrateur') {
+            if(req.body.delegation) {
+                if(req.body.delegation == "true") {   
+                    projetsDAO.activerDelegation(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                } else {
+                    projetsDAO.desactiverDelegation(req.params.projet, function(result) {
+                        res.json(result);
+                    });
+                }
+            } else {
+                res.sendStatus(400);
+            }
+            
+        } else {
+            res.sendStatus(401);
+        }
+    });
+    
     /* Suppression d'un projet */
     
     app.delete("/projets/:projet", auth.authenticate(), function(req, res) {  

@@ -22,7 +22,10 @@ var add = function (nom, dateLimite, profil, callback) {
                              nom: nom,
                              dateCreation: dateCreation,
                              dateLimite: dateLimite,
-                             profil: profil}).write().then(function(projets){
+                             profil: profil,
+                             rappels: true,
+                             delegation: true
+                           }).write().then(function(projets){
         callback(projets);
     });
 }
@@ -40,6 +43,30 @@ var remove = function(identifiant, callback) {
         callback(projets);
     });
 }
+
+var activerRappels = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ rappels: true }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
+
+var desactiverRappels = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ rappels: false }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
+
+var activerDelegation = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ delegation: true }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
+
+var desactiverDelegation = function(identifiant, callback) {
+    db.get('projets').find({ identifiant: identifiant }).assign({ delegation: false }).write().then(function(configuration){
+        callback(configuration);
+    });
+}
     
 module.exports = {
     /* Récupération de la liste de tous les projets */
@@ -51,5 +78,9 @@ module.exports = {
     /* Mise à jours de la date limite, du nom et du profil associé à un projet à partir de son identifiant */
     updateInfos: updateInfos,
     /* Suppression d'un projet à partir de son identifiant */
-    remove: remove
+    remove: remove,
+    activerRappels: activerRappels,
+    desactiverRappels: desactiverRappels,
+    activerDelegation: activerDelegation,
+    desactiverDelegation: desactiverDelegation
 }

@@ -22,10 +22,12 @@ app.use(cors(corsOptions));
 require('./routes/login.js')(app);
 require('./routes/invitations.js')(app);
 require('./routes/actions.js')(app);
+require('./routes/historique.js')(app);
 require('./routes/historiquedossier.js')(app);
 require('./routes/rappels.js')(app);
 require('./routes/profilsformulaires.js')(app);
 require('./routes/formulaires.js')(app);
+
 
 // CRON
 require('./cron');

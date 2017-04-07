@@ -75,11 +75,10 @@ module.exports = function(app) {
         }
     });
     
-        /* Ajout d'un rappel */
+    /* Activation et désactivation globale des rappels */
     
     app.put("/rappels/configuration/activation", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
-            console.log(req.body.activation);
             if(req.body.activation) {
                 if(req.body.activation == "true") {   
                     rappelsDAO.activerRappels(function(result) {
