@@ -5,8 +5,6 @@ module.exports = function(app) {
     var async = require('async');
     
     var invitationsDAO = require('../dao/invitationsjson.js');
-    var projetsDAO = require('../dao/projets.js');
-    var profilsDAO = require('../dao/profilsformulaires.js');
     var mail = require('../mail/mail.js');
         
     var auth = require("../authentification/auth.js")();  
@@ -25,17 +23,23 @@ module.exports = function(app) {
     
     app.post("/invitation/delegation", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'visiteur') {
-             console.log(req.body.email);
-            if(req.body.email) {
-              //  invitationsDAO.add(req.params.projet, req.body.email, "", function(invitation) {
-                    // ENVOI DU MAIL
-                   
-                        res.sendStatus(200);
-               // }); 
+            if(req.body.emails && req.user.projet && req.user.identifiant) {
+                async.eachSeries(req.body.emails, function iteratee(email, callback) {
+                    if(email.value && email.value != '') {
+                        invitationsDAO.add(req.user.projet, email.value, req.user.identifiant, function(invitation) {
+                            callback();
+                        });   
+                    } else {
+                         callback();
+                    }
+                }, function done() {
+                    res.sendStatus(200);
+                });
+                
             } else {
                 res.sendStatus(400);
             }
-       	}else {
+       	} else {
             	res.sendStatus(401);
         }
     });

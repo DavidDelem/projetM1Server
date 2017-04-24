@@ -39,15 +39,17 @@ var add = function (identifiantProjet, email, identifiantParent, callback) {
         type: "RECEPTION_INVITATION"
     };
     
-    db.get('invitations').push({identifiant: uuid.v4(),
+    var identifiant = uuid.v4();
+    
+    db.get('invitations').push({identifiant: identifiant,
                                 password: uuid.v4(),
                                 email: email,
                                 nom: "",
                                 prenom: "",
                                 identifiantProjet: identifiantProjet,
                                 identifiantParent: identifiantParent,
-                                historique: [ historique ]}).write().then(function(invitations){
-        callback(invitations);
+                                historique: [ historique ]}).write().then(function(invitations) {
+        callback(identifiant);
     });
 }
 

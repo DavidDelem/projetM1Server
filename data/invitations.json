@@ -1,68 +1,6 @@
 {
   "invitations": [
     {
-      "identifiant": "a",
-      "password": "aa",
-      "email": "david.delemotte@gmail.com",
-      "nom": "Delemotte",
-      "prenom": "David",
-      "identifiantProjet": "2",
-      "identifiantParent": "6fW1cYDLHz",
-      "historique": [
-        {
-          "date": 1490107493246,
-          "type": "RECEPTION_INVITATION"
-        },
-        {
-          "date": 1490107593246,
-          "type": "ENVOI_BIODATAS"
-        },
-        {
-          "date": 1490107793246,
-          "type": "VALIDATION_BIODATAS"
-        },
-        {
-          "date": 1491401323742,
-          "type": "TRANSFERT_AUTORITES"
-        },
-        {
-          "date": 1491401325701,
-          "type": "DEMANDE_ACCESS_OK"
-        }
-      ]
-    },
-    {
-      "identifiant": "a",
-      "password": "a",
-      "email": "david.delemotte@gmail.com",
-      "nom": "Delemotte",
-      "prenom": "David",
-      "identifiantProjet": "1",
-      "identifiantParent": "bd108985-7951-4e5e-bcd7-c65a64d1786d",
-      "historique": [
-        {
-          "date": 1490107493246,
-          "type": "RECEPTION_INVITATION"
-        },
-        {
-          "date": 1490107593246,
-          "type": "ENVOI_BIODATAS"
-        },
-        {
-          "date": 1490107793246,
-          "type": "VALIDATION_BIODATAS"
-        },
-        {
-          "date": 1490108593246,
-          "type": "TRANSFERT_AUTORITES"
-        },
-        {
-          "date": 1491150985975,
-          "type": "DEMANDE_ACCESS_OK"
-        }
-      ]
-    },
-    {
       "identifiant": "b",
       "password": "b",
       "email": "test@gmail.com",
@@ -115,26 +53,6 @@
           "type": "DEMANDE_ACCESS_KO"
         }
       ]
-    },
-    {
-      "identifiant": "6fmW1cYDLHz",
-      "password": "abcd1234",
-      "email": "david.delemotte@gmail.com",
-      "nom": "Delemotte",
-      "prenom": "David",
-      "identifiantProjet": "2",
-      "identifiantParent": "",
-      "historique": []
-    },
-    {
-      "identifiant": "fUU1cg5svSy",
-      "password": "abcd1234",
-      "email": "david.delemotte@gmail.com",
-      "nom": "Delemotte",
-      "prenom": "David",
-      "identifiantProjet": "2",
-      "identifiantParent": "6fW1cYDLHz",
-      "historique": []
     },
     {
       "identifiant": "bd108985-7951-4e5e-bcd7-c65a64d1786d",
@@ -647,6 +565,156 @@
       "historique": [
         {
           "date": 1491509872732,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "a",
+      "password": "a",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "2",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1491846980189,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "a9e780e7-2c7d-4519-b34b-b04348ec29a2",
+      "password": "bb92804e-fe84-434c-aad8-d11eb19d738e",
+      "email": "test@toto.fr",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492376777949,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "42514af6-6ce4-4fbb-82f2-ec1e7b9e6c57",
+      "password": "87a61440-83b6-4cc1-95f8-48616c86c1a5",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492436158028,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "7ce88388-8319-48c3-ae01-8379cca2c70c",
+      "password": "f760d19c-2c2e-47f9-a271-619f31240acc",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492436409092,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "9c188fed-027a-4d88-8098-0ea3ad9bc736",
+      "password": "318c66ba-6303-4ddb-8b15-2031c2b009d3",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492436520890,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "bdc71a66-710b-4132-864a-58e54ec5970a",
+      "password": "d67b38a4-5b19-437d-9a7c-7cf67a4de470",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492436627781,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "47fa9ab8-b1ec-4d23-9d68-404b2e6db618",
+      "password": "83657ea1-59f9-416a-943f-2caa1d6da9bc",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492436927916,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "15af2b08-c354-4cb0-8048-9980b74d5c4d",
+      "password": "5d9b2e3c-5f41-48d9-8790-5b183e77f07f",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492517778108,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "0d4b4e1e-bc30-4581-b5e4-a89ef2c08d4d",
+      "password": "6012ac8c-4daa-41d2-ab09-093e1a10c3aa",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492517802416,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "6564e916-d070-4cc5-a128-a930d8cdb880",
+      "password": "88ec39fc-826e-4fb5-baa6-2fbc291c5446",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1492548056519,
           "type": "RECEPTION_INVITATION"
         }
       ]

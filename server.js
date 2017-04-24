@@ -28,6 +28,7 @@ require('./routes/rappels.js')(app);
 require('./routes/profilsformulaires.js')(app);
 require('./routes/formulaires.js')(app);
 require('./routes/delegation.js')(app);
+require('./routes/administrateurs.js')(app);
 
 // CRON
 require('./cron');

@@ -175,6 +175,10 @@ module.exports = function(app) {
                 res.sendStatus(400);
             }
 
+        } else if(req.user.type === 'visiteur') {
+            invitationsDAO.getByProjet(req.user.projet, function(champs) {
+                res.json(champs);
+            }); 
         } else {
             res.sendStatus(401);
         }
@@ -196,23 +200,26 @@ module.exports = function(app) {
         }
     });
     
-    /* Ajout d'une invitation dans un projet */
+    /* Ajout d'invitations dans un projet */
     
     app.post("/projets/:projet/invitations", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
-            if(req.params.projet && req.body.email) {
-                invitationsDAO.add(req.params.projet, req.body.email, "", function(invitation) {
-                    // ENVOI DU MAIL
-                    console.log(invitation);
-
-                    var text = "identifiant" + invitation.identifiant + "motDePass" + invitation.password;
-
-
-                    mail.sendMail(req.body.email, text, function(toto){
-                        res.json(toto);
-                    });
-                    
-                }); 
+            if(req.params.projet && req.body.emails) {
+                async.eachSeries(req.body.emails, function iteratee(email, callback) {
+                    if(email.value != '') {
+                        invitationsDAO.add(req.params.projet, email.value, "", function(identifiantInvitation) {
+                            invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
+                                 mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, 'DATE_LIMITE', function(response) {
+                                    callback();
+                                });
+                            });
+                        });  
+                    } else {
+                        callback();
+                    }
+                }, function done() {
+                    res.sendStatus(200);
+                });
             } else {
                 res.sendStatus(400);
             }
@@ -229,6 +236,21 @@ module.exports = function(app) {
                     /* ENVOI MAIL */
                     res.json(champs);
                 });  
+            } else {
+                res.sendStatus(400);
+            }
+        } else if(req.user.type === 'visiteur') {
+            if(req.body.identifiant) {
+                invitationsDAO.getByIdentifiant(req.body.identifiant, function(invitation) {
+                    if(invitation[0].identifiantProjet == req.user.projet && invitation[0].identifiantParent != '') {
+                        console.log(req.body.identifiant);
+                        invitationsDAO.remove(req.body.identifiant, function(response) {
+                            res.sendStatus(200);
+                        });   
+                    } else {
+                        res.sendStatus(400);
+                    }
+                });
             } else {
                 res.sendStatus(400);
             }

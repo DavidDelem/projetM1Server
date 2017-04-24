@@ -25,7 +25,7 @@ module.exports = function(app) {
     app.post("/biodatas", auth.authenticate(), upload.single('image'), function(req, res) {  
         if (req.user.type === 'visiteur') {
             console.log(req.file);
-            
+            console.log(req.body.champs);
 //            var champs = [];
 //            async.eachSeries(req.body.fichiers, function iteratee(champ, callback) {
 //                console.log(champ);

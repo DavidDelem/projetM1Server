@@ -22,7 +22,7 @@
         },
         {
           "identifiant": "6",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "7",

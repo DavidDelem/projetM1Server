@@ -3,7 +3,6 @@ const db = low('data/rappels.json', {storage: require('lowdb/lib/storages/file-a
 
 var getAll = function(callback) {
     callback(db.get('rappels').sortBy('nbJours').value());
-    //callback(db.get('rappels').filter(rappel => 20 < rappel.nbJours && rappel.nbJours < 40).value());
 }
 
 var add = function (nbJours, callback) {

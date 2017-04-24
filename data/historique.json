@@ -25,7 +25,7 @@
       "lu": false,
       "details": {
         "projet": "identifiantProjet"
-      }  
+      }
     },
     {
       "identifiant": "4",
@@ -52,6 +52,15 @@
       "lu": false,
       "details": {
         "projet": "identifiantProjet"
+      }
+    },
+    {
+      "identifiant": "c1e808d9-7a03-4dd1-958a-4090d78e1dd8",
+      "date": 1492779600916,
+      "type": "DATE_LIMITE_ATTEINTE",
+      "lu": false,
+      "details": {
+        "projet": "2"
       }
     }
   ]
