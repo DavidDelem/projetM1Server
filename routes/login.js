@@ -51,14 +51,14 @@ module.exports = function(app) {
             res.sendStatus(400);
         }
     });
-
+    /*renvoie mot de pass*/
     app.post("/token/visiteur/identifiant", function(req, res) { 
         if (req.body.email) {
             invitations.getByEmail(req.body.email, function(result) {
                 if (result.length !== 0) {
                     console.log(result);
-                    var text = "identifiant" + result[0].identifiant + "motDePass" + result[0].password;
-                    mail.sendMail(req.body.email, text, function(toto){
+                    //var text = "identifiant" + result[0].identifiant + "motDePass" + result[0].password;
+                    mail.sendPass(req.body.email, result[0].identifiant, result[0].password, function(toto){
                         res.json(toto);
                     });
                 } else {

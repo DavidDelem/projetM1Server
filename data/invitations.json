@@ -3,7 +3,7 @@
     {
       "identifiant": "b",
       "password": "b",
-      "email": "test@gmail.com",
+      "email": "biodataisen@gmail.com",
       "nom": "Nom",
       "prenom": "Prénom",
       "identifiantProjet": "1",
@@ -381,6 +381,10 @@
         {
           "date": 1491466369694,
           "type": "TRANSFERT_AUTORITES"
+        },
+        {
+          "date": 1493132028307,
+          "type": "DEMANDE_ACCESS_OK"
         }
       ]
     },
@@ -408,6 +412,10 @@
         {
           "date": 1493044755228,
           "type": "TRANSFERT_AUTORITES"
+        },
+        {
+          "date": 1493132372412,
+          "type": "DEMANDE_ACCESS_KO"
         }
       ]
     },
