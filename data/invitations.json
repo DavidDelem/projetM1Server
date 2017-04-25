@@ -3,7 +3,7 @@
     {
       "identifiant": "b",
       "password": "b",
-      "email": "test@gmail.com",
+      "email": "biodataisen@gmail.com",
       "nom": "Nom",
       "prenom": "Prénom",
       "identifiantProjet": "1",
@@ -338,22 +338,6 @@
         {
           "date": 1491428328317,
           "type": "RECEPTION_INVITATION"
-        },
-        {
-          "date": 1490157493246,
-          "type": "ENVOI_BIODATAS"
-        },
-        {
-          "date": 1491466277875,
-          "type": "VALIDATION_BIODATAS"
-        },
-        {
-          "date": 1491466300512,
-          "type": "TRANSFERT_AUTORITES"
-        },
-        {
-          "date": 1491466308633,
-          "type": "DEMANDE_ACCESS_OK"
         }
       ]
     },
@@ -381,6 +365,10 @@
         {
           "date": 1491466369694,
           "type": "TRANSFERT_AUTORITES"
+        },
+        {
+          "date": 1493132028307,
+          "type": "DEMANDE_ACCESS_OK"
         }
       ]
     },
@@ -408,6 +396,10 @@
         {
           "date": 1493044755228,
           "type": "TRANSFERT_AUTORITES"
+        },
+        {
+          "date": 1493132372412,
+          "type": "DEMANDE_ACCESS_KO"
         }
       ]
     },

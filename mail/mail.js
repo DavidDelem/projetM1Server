@@ -44,10 +44,41 @@ var sendReponse = function(email, nbjours, callback) {
     callback();
 }
 
-var sendBiodatas = function(user, biodatas, fichiers, callback) {
+var sendPass = function(email, identifiant, password, callback) {
+
+    var datas = {
+        identifiant: identifiant,
+        password: password,
+    }
     
-    console.log(biodatas);
-    console.log(fichiers);
+    var mailContentHtml = renderMailContentHtml('recuperation-mot-pass.html', datas);
+    sendMail(email, 'recupPass', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
+var sendReponseValider = function(email, callback) {
+    var mailContentHtml = renderMailContentHtml('reponse-finale-positive.html');
+    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
+var sendReponseNonValiderAu = function(email, callback) {
+    var mailContentHtml = renderMailContentHtml('reponse-finale-negative.html');
+    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
+var sendReponseNonValider = function(email, callback) {
+    var mailContentHtml = renderMailContentHtml('reponse-negative.html');
+    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
+var sendBiodatas = function(user, biodatas, callback) {
     
     var datas = {
         biodatas: biodatas
@@ -55,7 +86,7 @@ var sendBiodatas = function(user, biodatas, fichiers, callback) {
     
     var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
     console.log(mailContentHtml);
-    sendMailFiles('biodataisen@gmail.com', 'biodatas', mailContentHtml, fichiers, function(response) {
+    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
         callback();
     });
 }
@@ -90,29 +121,22 @@ var renderMailContentHtml = function(fileName, datas) {
 }
 
 var sendMail = function(email, subject, htmlContent, callback) {
-    let mailOptions = {
-        from: 'biodataisen@gmail.com',
-        to : email,
-        subject: subject,
-        html: htmlContent
-    };
-    
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message %s sent: %s', info.messageId, info.response);
-        callback();
-    });
-}
-
-var sendMailFiles = function(email, subject, htmlContent, fichiers, callback) {
-    let mailOptions = {
+    var mailOptions = {
         from: 'biodataisen@gmail.com',
         to : email,
         subject: subject,
         html: htmlContent,
-        attachments: fichiers
+
+        attachments: [
+            {   // utf-8 string as an attachment
+                 filename: 'text1.txt',
+                 content: 'hello world!'
+             },
+            /*{   // file on disk as an attachment
+                   filename: 'text3.txt',
+                   path: '/path/to/file.txt' // stream this file
+             }*/
+        ]
     };
     
     transporter.sendMail(mailOptions, (error, info) => {
@@ -128,6 +152,9 @@ module.exports = {
     sendInvitation: sendInvitation,
     sendRappel: sendRappel,
     sendReponse: sendReponse,
-    sendBiodatas: sendBiodatas
+    sendBiodatas: sendBiodatas,
+    sendPass: sendPass,
+    sendReponseValider: sendReponseValider,
+    sendReponseNonValiderAu: sendReponseNonValiderAu,
+    sendReponseNonValider: sendReponseNonValider
 }
-
