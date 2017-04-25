@@ -1,44 +1,8 @@
 {
   "historique": [
     {
-      "identifiant": "1",
-      "date": 1490107493246,
-      "type": "ENVOI_BIODATAS",
-      "lu": false,
-      "details": {
-        "projet": "identifiantProjet"
-      }
-    },
-    {
-      "identifiant": "2",
-      "date": 1490107893246,
-      "type": "DELEGATION_INVITATION",
-      "lu": false,
-      "details": {
-        "projet": "identifiantProjet"
-      }
-    },
-    {
-      "identifiant": "3",
-      "date": 1490209493246,
-      "type": "DATE_LIMITE_ATTEINTE",
-      "lu": false,
-      "details": {
-        "projet": "identifiantProjet"
-      }
-    },
-    {
-      "identifiant": "4",
-      "date": 1493007493246,
-      "type": "TOUTES_BIODATAS_ENVOYEES",
-      "lu": true,
-      "details": {
-        "projet": "identifiantProjet"
-      }
-    },
-    {
       "identifiant": "5",
-      "date": 1493107493246,
+      "date": 1492133302354,
       "type": "TOUTES_BIODATAS_ENVOYEES",
       "lu": true,
       "details": {
@@ -47,11 +11,20 @@
     },
     {
       "identifiant": "c1e808d9-7a03-4dd1-958a-4090d78e1dd8",
-      "date": 1495879600916,
-      "type": "DATE_LIMITE_ATTEINTE",
+      "date": 1493133302354,
+      "type": "DELEGATION_INVITATION",
       "lu": true,
       "details": {
         "projet": "2"
+      }
+    },
+    {
+      "identifiant": "4866e48d-eaf0-4bfe-a2ad-9907d30be41b",
+      "date": 1491133302354,
+      "type": "DATE_LIMITE_ATTEINTE",
+      "lu": true,
+      "details": {
+        "projet": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
       }
     }
   ]

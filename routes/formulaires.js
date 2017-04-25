@@ -23,12 +23,13 @@ module.exports = function(app) {
     
     /* Envoi des biodatas */
     
-    app.post("/biodatas", auth.authenticate(), upload.single('image'), function(req, res) {  
+    app.post("/biodatas", auth.authenticate(), upload.array('fichiers', 10), function(req, res) {  
         if (req.user.type === 'visiteur') {
-            //console.log(req.file);
+            //console.log(req.files);
             
             var erreurs = [];
             var biodatas = [];
+            var fichiers = [];
             
             var champs = JSON.parse(req.body.champs);
             
@@ -40,7 +41,14 @@ module.exports = function(app) {
                     // On ne fait rien, c'est un champ facultatif
                 } else {
                     if(champ.type.indexOf('fichier') !== -1) {
-                        // traitementFichier();
+                        fichier = _.find(req.files, { 'originalname': champ.saisie.fichier });
+                        var resultat = traitementFichier(champ, fichier);
+                        if(resultat != false) {
+                            fichiers.push(resultat);
+                        } else {
+                            erreurs.push(champ);
+                        }
+                        
                     } else if(champ.type.indexOf('texte') !== -1 || champs.type == 'identite_nationalite') {
                         traitementTexte(champ, function(saisie) {
                             if(saisie !== false) {
@@ -58,7 +66,7 @@ module.exports = function(app) {
                 callback();
             }, function done() {
                 if(_.isEmpty(erreurs)) {
-                    mail.sendBiodatas(req.user, biodatas, function(response) {
+                    mail.sendBiodatas(req.user, biodatas, fichiers, function(response) {
                         res.json(true);
                     });
                 } else {
@@ -68,8 +76,14 @@ module.exports = function(app) {
         }
     });
     
-    function traitementFichier(champ, callback) {
-        callback(false);
+    function traitementFichier(champ, fichier) {
+        var fichierMail = {
+            filename: fichier.originalname,
+            content: fichier.buffer,
+            contentType: fichier.mimetype
+        }
+        
+        return fichierMail;
     };
     
     function traitementTexte(champ, callback) {

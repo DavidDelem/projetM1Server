@@ -44,7 +44,10 @@ var sendReponse = function(email, nbjours, callback) {
     callback();
 }
 
-var sendBiodatas = function(user, biodatas, callback) {
+var sendBiodatas = function(user, biodatas, fichiers, callback) {
+    
+    console.log(biodatas);
+    console.log(fichiers);
     
     var datas = {
         biodatas: biodatas
@@ -52,7 +55,7 @@ var sendBiodatas = function(user, biodatas, callback) {
     
     var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
     console.log(mailContentHtml);
-    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+    sendMailFiles('biodataisen@gmail.com', 'biodatas', mailContentHtml, fichiers, function(response) {
         callback();
     });
 }
@@ -92,6 +95,24 @@ var sendMail = function(email, subject, htmlContent, callback) {
         to : email,
         subject: subject,
         html: htmlContent
+    };
+    
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+        callback();
+    });
+}
+
+var sendMailFiles = function(email, subject, htmlContent, fichiers, callback) {
+    let mailOptions = {
+        from: 'biodataisen@gmail.com',
+        to : email,
+        subject: subject,
+        html: htmlContent,
+        attachments: fichiers
     };
     
     transporter.sendMail(mailOptions, (error, info) => {

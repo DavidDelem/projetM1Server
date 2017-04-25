@@ -4,7 +4,7 @@ var _ = require('lodash');
 var uuid = require('node-uuid');
 
 var get = function(date, callback) {
-    callback(_.reverse(db.get('historique').filter(historique => date <= historique.date).sortBy(date).cloneDeep().value()));
+    callback(_.reverse(db.get('historique').filter(historique => date <= historique.date).sortBy('date').cloneDeep().value()));
 }
 
 var add = function (type, projet, callback) {
