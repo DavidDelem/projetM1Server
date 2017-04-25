@@ -358,21 +358,6 @@
       ]
     },
     {
-      "identifiant": "37c6b506-032b-423e-9547-589be3402245",
-      "password": "d5a144a9-f1da-49d8-8486-cc037bb359ea",
-      "email": "test2@gmail.com",
-      "nom": "",
-      "prenom": "",
-      "identifiantProjet": "d15a4363-233b-429e-8ac0-78552bf27a3a",
-      "identifiantParent": "",
-      "historique": [
-        {
-          "date": 1491428335896,
-          "type": "RECEPTION_INVITATION"
-        }
-      ]
-    },
-    {
       "identifiant": "8b3674ab-e665-42b0-989f-9a1e568ef0f1",
       "password": "ccd73f36-af54-45da-87a9-b8fa844773a7",
       "email": "test3@gmail.com",
@@ -415,6 +400,14 @@
         {
           "date": 1490157493246,
           "type": "ENVOI_BIODATAS"
+        },
+        {
+          "date": 1493044720048,
+          "type": "VALIDATION_BIODATAS"
+        },
+        {
+          "date": 1493044755228,
+          "type": "TRANSFERT_AUTORITES"
         }
       ]
     },
@@ -715,6 +708,21 @@
       "historique": [
         {
           "date": 1492548056519,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "86192c2f-707b-4efb-9c96-80006afa7a4b",
+      "password": "39c23ddc-3230-4ced-b3dd-bfe785a3682b",
+      "email": "toto@totof.fr",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "2",
+      "identifiantParent": "a",
+      "historique": [
+        {
+          "date": 1493046562245,
           "type": "RECEPTION_INVITATION"
         }
       ]

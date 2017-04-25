@@ -44,6 +44,20 @@ var sendReponse = function(email, nbjours, callback) {
     callback();
 }
 
+var sendBiodatas = function(user, biodatas, callback) {
+    
+    var datas = {
+        biodatas: biodatas
+    }
+    
+    var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
+    console.log(mailContentHtml);
+    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
+
 //var sendMail = function(email, text, callback) {
 //
 //    
@@ -92,6 +106,7 @@ var sendMail = function(email, subject, htmlContent, callback) {
 module.exports = {
     sendInvitation: sendInvitation,
     sendRappel: sendRappel,
-    sendReponse: sendReponse
+    sendReponse: sendReponse,
+    sendBiodatas: sendBiodatas
 }
 

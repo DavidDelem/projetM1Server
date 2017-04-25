@@ -49,7 +49,11 @@ module.exports = function(app) {
                         callback();
                         
                     }, function done() {
-                        res.json(champs);
+                        
+                        var champsFinaux = _.filter(champs, function(champ) {
+                            return champ.coche === true;
+                        });
+                        res.json(champsFinaux);
                     });
                     
                 });

@@ -210,11 +210,11 @@
       "champs": [
         {
           "identifiant": "1",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "2",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "3",
@@ -222,11 +222,7 @@
         },
         {
           "identifiant": "4",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "5",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "6",
@@ -245,23 +241,7 @@
           "obligatoire": false
         },
         {
-          "identifiant": "10",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "11",
-          "obligatoire": false
-        },
-        {
           "identifiant": "12",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "13",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "14",
           "obligatoire": false
         }
       ]

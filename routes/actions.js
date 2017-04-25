@@ -5,7 +5,7 @@ module.exports = function(app) {
     var async = require('async');
 
     var invitationsDAO = require('../dao/invitationsjson.js');
-        var mail = require('../mail/mail.js');
+    var mail = require('../mail/mail.js');
     
     var auth = require("../authentification/auth.js")();  
     var cfg = require("../authentification/config.js");  
@@ -50,7 +50,9 @@ module.exports = function(app) {
     
     app.put("/invitations/:invitation/demandeaccessok", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
-            /* ENVOI MAIL */
+//            mail.send(invitation[0].email, invitation[0].identifiant, invitation[0].password, 'DATE_LIMITE', function(response) {
+//                callback();
+//            });
             invitationsDAO.addToHistorique(req.params.invitation, 'DEMANDE_ACCESS_OK', function(historique) {
                 res.json(historique);
             });

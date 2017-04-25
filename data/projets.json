@@ -5,7 +5,7 @@
       "nom": "Projet Thales",
       "dateCreation": 1489762174000,
       "dateLimite": 1487286000000,
-      "profil": "2",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -14,7 +14,7 @@
       "nom": "Projet ISEN",
       "dateCreation": 1489675774000,
       "dateLimite": 1492725600000,
-      "profil": "3",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -23,7 +23,7 @@
       "nom": "Grand projet",
       "dateCreation": 1489589374000,
       "dateLimite": 1487286000000,
-      "profil": "1",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -32,7 +32,7 @@
       "nom": "Projet créé hier",
       "dateCreation": 1491415015727,
       "dateLimite": 1492034400000,
-      "profil": "1",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -41,7 +41,7 @@
       "nom": "Nom du projet",
       "dateCreation": 1491427264526,
       "dateLimite": 1498082400000,
-      "profil": "1",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -50,7 +50,7 @@
       "nom": "Test projet clos",
       "dateCreation": 1484062200000,
       "dateLimite": 1484089200000,
-      "profil": "1",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -59,16 +59,16 @@
       "nom": "Projet exemple",
       "dateCreation": 1491428314924,
       "dateLimite": 1496268000000,
-      "profil": "1",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
-      "delegation": false
+      "delegation": true
     },
     {
       "identifiant": "b5a2ce5d-1733-4901-b2c0-f668626f15da",
       "nom": "Ancien projet",
       "dateCreation": 1478942000000,
       "dateLimite": 1479942000000,
-      "profil": "2",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true
     },
@@ -77,27 +77,27 @@
       "nom": "Test",
       "dateCreation": 1492376765486,
       "dateLimite": 1493157600000,
-      "profil": "2",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
-      "delegation": true
+      "delegation": false
     },
     {
       "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8",
       "nom": "Date limite J+7",
       "dateCreation": 1492464113098,
       "dateLimite": 1493071200000,
-      "profil": "2",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
-      "delegation": true
+      "delegation": false
     },
     {
       "identifiant": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
       "nom": "Date limite J+2 autre",
       "dateCreation": 1492464168137,
       "dateLimite": 1492639200000,
-      "profil": "2",
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
-      "delegation": true
+      "delegation": false
     }
   ]
 }

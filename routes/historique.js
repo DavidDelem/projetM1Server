@@ -23,6 +23,20 @@ module.exports = function(app) {
         } else {
             res.sendStatus(401);
         }
+    });  
+    
+    app.put("/historique/:identifiant", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'administrateur') {
+            if(req.params.identifiant && req.body.lu) {
+                historiqueDAO.update(req.params.identifiant, req.body.lu, function(historique) {
+                    res.sendStatus(200);
+                }); 
+            } else {
+                res.sendStatus(400);
+            }
+        } else {
+            res.sendStatus(401);
+        }
     });    
     
 }

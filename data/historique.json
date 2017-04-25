@@ -29,9 +29,9 @@
     },
     {
       "identifiant": "4",
-      "date": 1493107493246,
+      "date": 1493007493246,
       "type": "TOUTES_BIODATAS_ENVOYEES",
-      "lu": false,
+      "lu": true,
       "details": {
         "projet": "identifiantProjet"
       }
@@ -46,19 +46,10 @@
       }
     },
     {
-      "identifiant": "5",
-      "date": 1493107493246,
-      "type": "TOUTES_BIODATAS_ENVOYEES",
-      "lu": false,
-      "details": {
-        "projet": "identifiantProjet"
-      }
-    },
-    {
       "identifiant": "c1e808d9-7a03-4dd1-958a-4090d78e1dd8",
-      "date": 1492779600916,
+      "date": 1495879600916,
       "type": "DATE_LIMITE_ATTEINTE",
-      "lu": false,
+      "lu": true,
       "details": {
         "projet": "2"
       }

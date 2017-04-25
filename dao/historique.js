@@ -1,9 +1,10 @@
 const low = require('lowdb');
 const db = low('data/historique.json', {storage: require('lowdb/lib/storages/file-async') });
+var _ = require('lodash');
 var uuid = require('node-uuid');
 
 var get = function(date, callback) {
-    callback(db.get('historique').filter(historique => date <= historique.date).sortBy(date).value());
+    callback(_.reverse(db.get('historique').filter(historique => date <= historique.date).sortBy(date).cloneDeep().value()));
 }
 
 var add = function (type, projet, callback) {
