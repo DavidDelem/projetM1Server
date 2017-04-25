@@ -338,22 +338,6 @@
         {
           "date": 1491428328317,
           "type": "RECEPTION_INVITATION"
-        },
-        {
-          "date": 1490157493246,
-          "type": "ENVOI_BIODATAS"
-        },
-        {
-          "date": 1491466277875,
-          "type": "VALIDATION_BIODATAS"
-        },
-        {
-          "date": 1491466300512,
-          "type": "TRANSFERT_AUTORITES"
-        },
-        {
-          "date": 1491466308633,
-          "type": "DEMANDE_ACCESS_OK"
         }
       ]
     },

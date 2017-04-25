@@ -28,8 +28,11 @@ module.exports = function(app) {
     
     app.put("/invitations/:invitation/refusbiodatas", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
+            /* ENVOI MAIL */
+                mail.sendReponseNonValider("biodataisen@gmail.com", function(response) {
+                 callback();
+            });
             invitationsDAO.addToHistorique(req.params.invitation, 'REFUS_BIODATAS', function(historique) {
-                /* ENVOI MAIL */
                 res.json(historique);
             });
         } else {
@@ -65,7 +68,7 @@ module.exports = function(app) {
     app.put("/invitations/:invitation/demandeaccessko", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
             /* ENVOI MAIL */
-            mail.sendReponseNonValider("biodataisen@gmail.com", function(response) {
+            mail.sendReponseNonValiderAu("biodataisen@gmail.com", function(response) {
              callback();
         });
             invitationsDAO.addToHistorique(req.params.invitation, 'DEMANDE_ACCESS_KO', function(historique) {

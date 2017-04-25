@@ -64,8 +64,15 @@ var sendReponseValider = function(email, callback) {
     });
 }
 
-var sendReponseNonValider = function(email, callback) {
+var sendReponseNonValiderAu = function(email, callback) {
     var mailContentHtml = renderMailContentHtml('reponse-finale-negative.html');
+    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
+var sendReponseNonValider = function(email, callback) {
+    var mailContentHtml = renderMailContentHtml('reponse-negative.html');
     sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
         callback();
     });
@@ -148,6 +155,7 @@ module.exports = {
     sendBiodatas: sendBiodatas,
     sendPass: sendPass,
     sendReponseValider: sendReponseValider,
+    sendReponseNonValiderAu: sendReponseNonValiderAu,
     sendReponseNonValider: sendReponseNonValider
 }
 
