@@ -94,10 +94,10 @@
       "identifiant": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
       "nom": "Date limite J+2 autre",
       "dateCreation": 1492464168137,
-      "dateLimite": 1492639200000,
+      "dateLimite": 1496181600000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
-      "delegation": false
+      "delegation": true
     }
   ]
 }

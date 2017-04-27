@@ -22,7 +22,7 @@ var sendInvitation = function(email, identifiant, password, dateLimite, callback
     }
     
     var mailContentHtml = renderMailContentHtml('invitation.html', datas);
-    sendMail(email, 'invitation seaTestBase', mailContentHtml, function(response) {
+    sendMail(email, 'SeaTestBase Biodatas - Invitation', mailContentHtml, function(response) {
         callback();
     });
 }
@@ -34,7 +34,7 @@ var sendRappel = function(email, dateLimite, callback) {
     }
 
     var mailContentHtml = renderMailContentHtml('rappel.html', datas);
-    sendMail(email, 'rappel seaTestBase', mailContentHtml, function(response) {
+    sendMail(email, 'SeaTestBase Biodatas - Rappel important', mailContentHtml, function(response) {
         callback();
     });
 }
@@ -52,36 +52,51 @@ var sendPass = function(email, identifiant, password, callback) {
     }
     
     var mailContentHtml = renderMailContentHtml('recuperation-mot-pass.html', datas);
-    sendMail(email, 'recupPass', mailContentHtml, function(response) {
+    sendMail(email, 'SeaTestBase Biodatas - Vos identifiants de connexion', mailContentHtml, function(response) {
         callback();
     });
 }
 
-var sendReponseValider = function(email, callback) {
-    var mailContentHtml = renderMailContentHtml('reponse-finale-positive.html');
-    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+var sendReponseValider = function(email, message, callback) {
+    
+    var datas = {
+        message: message
+    }
+        
+    var mailContentHtml = renderMailContentHtml('reponse-finale-positive.html', datas);
+    sendMail(email, 'Réponse des autorités concernant votre venue', mailContentHtml, function(response) {
         callback();
     });
 }
 
-var sendReponseNonValiderAu = function(email, callback) {
-    var mailContentHtml = renderMailContentHtml('reponse-finale-negative.html');
-    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+var sendReponseNonValiderAu = function(email, message, callback) {
+    
+    var datas = {
+        message: message
+    }
+    
+    console.log(email);
+    
+    var mailContentHtml = renderMailContentHtml('reponse-finale-negative.html', datas);
+    sendMail(email, 'SeaTestBase Biodatas - Réponse des autorités concernant votre venue', mailContentHtml, function(response) {
         callback();
     });
 }
 
-var sendReponseNonValider = function(email, callback) {
-    var mailContentHtml = renderMailContentHtml('reponse-negative.html');
-    sendMail('biodataisen@gmail.com', 'biodatas', mailContentHtml, function(response) {
+var sendReponseNonValider = function(email, messageExplicatif, callback) {
+    
+    var datas = {
+        messageExplicatif: messageExplicatif
+    }
+    
+    var mailContentHtml = renderMailContentHtml('reponse-negative.html', datas);
+    console.log(mailContentHtml);
+    sendMail(email, 'SeaTestBase Biodatas - Problème concernant les données reçues', mailContentHtml, function(response) {
         callback();
     });
 }
 
 var sendBiodatas = function(user, biodatas, fichiers, callback) {
-    
-    console.log(biodatas);
-    console.log(fichiers);
     
     var datas = {
         biodatas: biodatas
@@ -89,39 +104,18 @@ var sendBiodatas = function(user, biodatas, fichiers, callback) {
     
     var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
     console.log(mailContentHtml);
-    sendMailFiles('biodataisen@gmail.com', 'biodatas', mailContentHtml, fichiers, function(response) {
+    sendMailFiles('biodataisen@gmail.com', 'Biodatas VISITEUR-EMAIL VISITEUR-PROJET', mailContentHtml, fichiers, function(response) {
         callback();
     });
 }
 
-
-//var sendMail = function(email, text, callback) {
-//
-//    
-//    var mailContentHtml = nunjucks.render('invitation.html', { foo: 'bar' });
-//    console.log(mailContentHtml);
-////    
-////    let mailOptions = {
-////        from: 'biodataisen@gmail.com', // sender address
-////        to : email, // list of receivers
-////        subject: 'Hello ✔', // Subject line
-////        html: text// html body
-////    };
-////
-////// send mail with defined transport object
-////transporter.sendMail(mailOptions, (error, info) => {
-////    if (error) {
-////        return console.log(error);
-////    }
-////    console.log('Message %s sent: %s', info.messageId, info.response);
-////});
-//
-//    callback("ok");
-//}
+/* Génère l'email au format html à partir d'un fichier et de données */
 
 var renderMailContentHtml = function(fileName, datas) {
     return nunjucks.render(fileName, datas);
 }
+
+/* Envoi d'un email sans piéces jointes */
 
 var sendMail = function(email, subject, htmlContent, callback) {
     var mailOptions = {
@@ -139,6 +133,8 @@ var sendMail = function(email, subject, htmlContent, callback) {
         callback();
     });
 }
+
+/* Envoi d'un email avec des piéces jointes */
 
 var sendMailFiles = function(email, subject, htmlContent, fichiers, callback) {
     let mailOptions = {

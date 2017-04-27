@@ -1,15 +1,33 @@
-<div style="background-color: rgb(74, 144, 226); width: 100%; padding: 10px; color: #fff;">
-    <h1>SeaTestBase Biodatas</h1>
+<div style="background-color: rgb(74, 144, 226); width: 100%; padding-top: 8px; padding-bottom: 8px; color: #fff; text-align: center;">
+    <h1 style="font-weight: normal;">SeaTestBase Biodatas</h1>
 </div>
-<div style="background-color: rgb(238, 238, 238); color: #222">
-    <h2>Bonjour,</h2>
-    <p>Vous avez reçu une invitation pour saisir vos biodatas afin d'accéder prochainement à Sea Test Base.</p>
-    <p>Utilisez les identifiants suivants afin de vous connecter</p>
-    <div style="background-color: #fff; width: 70%; margin-left: 15%;">
-        <p>Identifiant: {{ identifiant }}</p>
-        <p>Mot de passe: {{ password }}</p>
+<div style="background-color: rgb(238, 238, 238); color: #222; padding: 15px;">
+    <div style="height: 25px; width: 100%;"></div>
+    <div style="width: 70%; color: #222222; margin-left: 15%;">
+        <h2>Bonjour,</h2>
+        <p>Vous avez reçu une invitation pour saisir vos biodatas afin d'accéder prochainement à Sea Test Base.</p>
+        <p>Utilisez les identifiants suivants pour vous connecter:</p>
     </div>
-    <p>Connexion</p>
-    <p>La date limite d'envoi de vos biodatas pour ce projet est fixée au {{ dateLimite }}</p>
-    <p>A tout moment, vous pourrez également consulter l'avancée de votre demande grâce à ces identifiants</p>
+    <div style="height: 10px; width: 100%;"></div>
+    <div style="background-color: #fff; width: 70%; margin-left: 15%;">
+        <div style="height: 10px; width: 100%;"></div>
+        <div style="width: 80%; margin-left: 10%;">
+            <p>Identifiant: <span style="font-weight: bold;">{{ identifiant }}</span></p>
+            <p>Mot de passe: <span style="font-weight: bold;">{{ password }}</span></p>
+        </div>
+        <div style="height: 10px; width: 100%;"></div>
+    </div>
+    <div style="height: 25px; width: 100%;"></div>
+    <a href="http://www.google.fr" target="_blank" style="display: inline-block; background-color: #fff; padding-top: 20px; padding-bottom: 20px; width: 70%; margin-left: 15%; color: #000; text-decoration: none; text-align: center;">
+        <span style="font-size: 1.4em;">CONNEXION</span>
+    </a>
+    <div style="text-align: center;">
+        <p style="font-size: 0.8em;">Ou utilisez le lien suivant: http://www.adressedusite.fr</p>
+    </div>
+    <div style="height: 25px; width: 100%;"></div>
+    <div style="text-align: center; color: #7d7d7d;">
+        <p>La date limite d'envoi de vos biodatas est fixée au {{ dateLimite }}</p>
+        <p>A tout moment, vous pourrez également consulter l'avancée de votre dossier grâce à ces identifiants</p>
+    </div>
+    <div style="height: 25px; width: 100%;"></div>
 </div>

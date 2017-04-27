@@ -1,8 +1,24 @@
-<div style="background-color: rgb(74, 144, 226); width: 100%; padding: 10px; color: #fff;">
-    <h1>SeaTestBase Biodatas</h1>
+<div style="background-color: rgb(74, 144, 226); width: 100%; padding-top: 8px; padding-bottom: 8px; color: #fff; text-align: center;">
+    <h1 style="font-weight: normal;">SeaTestBase Biodatas</h1>
 </div>
-<div style="background-color: rgb(238, 238, 238); color: #222">
-    <h2>Bonjour,</h2>
-    <p>Votre demande d'accés à SeaTestBase à été refusée par les autorités</p>
-    <p>En l'état actuel, vous ne pouvez pas accéder à Sea Test Base</p>
+<div style="background-color: rgb(238, 238, 238); color: #222; padding: 15px;">
+    <div style="height: 25px; width: 100%;"></div>
+    <div style="width: 70%; color: #222222; margin-left: 15%;">
+        <h2>Bonjour,</h2>
+        <p>Nous avons le regret de vous informer que votre demande d'accés à SeaTestBase à été refusée par les autorités.</p>
+        <p>En l'état actuel, vous ne pouvez pas accéder à Sea Test Base.</p>
+        
+        {% if message != '' %}
+            <p>Message de l'administrateur:</p>
+            <div style="height: 10px; width: 100%;"></div>
+            <div style="background-color: #fff; width: 70%; margin-left: 15%;">
+                <div style="height: 10px; width: 100%;"></div>
+                <div style="width: 80%; margin-left: 10%;">
+                    {{ message }}
+                </div>
+                <div style="height: 10px; width: 100%;"></div>
+            </div>
+        {% endif %}
+    </div>
+    <div style="height: 25px; width: 100%;"></div>
 </div>
