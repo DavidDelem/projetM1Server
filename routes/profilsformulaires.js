@@ -50,10 +50,14 @@ module.exports = function(app) {
                         
                     }, function done() {
                         
-                        var champsFinaux = _.filter(champs, function(champ) {
-                            return champ.coche === true;
-                        });
-                        res.json(champsFinaux);
+                        if(req.user.type == 'visiteur') {
+                            var champsFinaux = _.filter(champs, function(champ) {
+                                return champ.coche === true;
+                            });
+                            res.json(champsFinaux);
+                        } else {
+                            res.json(champs);
+                        }
                     });
                     
                 });

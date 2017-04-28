@@ -27,7 +27,7 @@ module.exports = function(app) {
     
     app.put("/historique/:identifiant", auth.authenticate(), function(req, res) {  
         if (req.user.type === 'administrateur') {
-            if(req.params.identifiant && req.body.lu) {
+            if(req.params.identifiant && req.body.lu == true || req.body.lu == false) {
                 historiqueDAO.update(req.params.identifiant, req.body.lu, function(historique) {
                     res.sendStatus(200);
                 }); 
