@@ -15,8 +15,18 @@ module.exports = function(app) {
 
     
     app.get("/invitations/:invitation/historique", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'visiteur' || req.user.type === 'administrateur') {
+        if (req.user.type === 'administrateur') {
             invitationsDAO.getHistorique(req.params.invitation, function(historique) {
+                res.json(historique);
+            });
+        } else {
+            res.sendStatus(401);
+        }
+    });    
+    
+    app.get("/visiteur/invitation/historique", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'visiteur') {
+            invitationsDAO.getHistorique(req.user.identifiant, function(historique) {
                 res.json(historique);
             });
         } else {

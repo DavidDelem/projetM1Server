@@ -22,7 +22,7 @@
       "identifiant": "4866e48d-eaf0-4bfe-a2ad-9907d30be41b",
       "date": 1491133302354,
       "type": "DATE_LIMITE_ATTEINTE",
-      "lu": false,
+      "lu": true,
       "details": {
         "projet": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
       }
@@ -34,6 +34,15 @@
       "lu": false,
       "details": {
         "projet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b"
+      }
+    },
+    {
+      "identifiant": "f4220193-c532-4c7f-8f89-5f3eec927f49",
+      "date": 1493650800495,
+      "type": "TOUTES_BIODATAS_ENVOYEES",
+      "lu": false,
+      "details": {
+        "projet": "fd14c308-7993-4228-bf30-0dd5ebf8b37f"
       }
     }
   ]

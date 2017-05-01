@@ -2,6 +2,7 @@ const low = require('lowdb');
 const db = low('data/invitations.json', {storage: require('lowdb/lib/storages/file-async') });
 var _ = require('lodash');
 var uuid = require('node-uuid');
+var shortid = require('shortid');
 
 var getByProjet = function(identifiantProjet, callback) {
 
@@ -39,10 +40,10 @@ var add = function (identifiantProjet, email, identifiantParent, callback) {
         type: "RECEPTION_INVITATION"
     };
     
-    var identifiant = uuid.v4();
+    var identifiant = shortid.generate();
     
     db.get('invitations').push({identifiant: identifiant,
-                                password: uuid.v4(),
+                                password: shortid.generate(),
                                 email: email,
                                 nom: "",
                                 prenom: "",

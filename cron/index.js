@@ -26,7 +26,7 @@ new CronJob('00 00 08 * * *', function() { // */3 * * * * *
     
     var dateDebut = moment().startOf('day').format('x');
     var dateFin = moment().add(2, 'years').startOf('day').format('x');
-    var toutesInvitationsEnvoyees = true;
+    var toutesBiodatasEnvoyees = true;
     
     projets.getAll('dateLimite', dateDebut - 10, dateFin, function(projets) {
         for(var projet of projets) {  
