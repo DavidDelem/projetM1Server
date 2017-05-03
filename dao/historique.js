@@ -7,11 +7,7 @@ var get = function(date, callback) {
     callback(_.reverse(db.get('historique').filter(historique => date <= historique.date).sortBy('date').cloneDeep().value()));
 }
 
-var add = function (type, projet, callback) {
-    
-    var details = {
-        projet: projet
-    };
+var add = function (type, details, callback) {
     
     db.get('historique').push({identifiant: uuid.v4(),
                                 date: Date.now(),

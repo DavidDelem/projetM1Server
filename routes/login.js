@@ -5,7 +5,7 @@ module.exports = function(app) {
     var async = require('async');
     
     var administrateurs = require('../dao/administrateurs.js');
-    var invitations = require('../dao/invitationsjson.js');
+    var invitations = require('../dao/invitations.js');
     
     var auth = require("../authentification/auth.js")();  
     var cfg = require("../authentification/config.js");  
@@ -51,7 +51,9 @@ module.exports = function(app) {
             res.sendStatus(400);
         }
     });
+    
     /*renvoie mot de pass*/
+    
     app.post("/token/visiteur/identifiant", function(req, res) { 
         if (req.body.email) {
             invitations.getByEmail(req.body.email, function(result) {

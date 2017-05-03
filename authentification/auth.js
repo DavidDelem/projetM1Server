@@ -3,7 +3,7 @@ var passportJWT = require("passport-jwt");
 var cfg = require("./config.js");
 
 var administrateurs = require('../dao/administrateurs.js');
-var invitations = require('../dao/invitationsjson.js');
+var invitations = require('../dao/invitations.js');
 
 var async = require('async');
 
@@ -23,7 +23,7 @@ module.exports = function() {
             if(payload.type == 'visiteur') {
                 invitations.getByIdentifiant(payload.id, function(result) {
                     if (result.length !== 0) {
-                        return done(null, { type: 'visiteur', identifiant: result[0].identifiant, projet: result[0].identifiantProjet });
+                        return done(null, { type: 'visiteur', identifiant: result[0].identifiant, email: result[0].email, projet: result[0].identifiantProjet });
                     } else {
                         return done(null, false, { message: 'Invalid token' });
                     }

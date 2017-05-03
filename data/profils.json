@@ -178,7 +178,7 @@
         },
         {
           "identifiant": "2",
-          "obligatoire": true
+          "obligatoire": false
         },
         {
           "identifiant": "3",
@@ -186,7 +186,11 @@
         },
         {
           "identifiant": "4",
-          "obligatoire": true
+          "obligatoire": false
+        },
+        {
+          "identifiant": "5",
+          "obligatoire": false
         },
         {
           "identifiant": "6",
@@ -205,15 +209,36 @@
           "obligatoire": false
         },
         {
+          "identifiant": "10",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "11",
+          "obligatoire": false
+        },
+        {
           "identifiant": "12",
           "obligatoire": false
+        },
+        {
+          "identifiant": "13",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "14",
+          "obligatoire": true
         }
       ]
     },
     {
       "identifiant": "280b6254-a7bd-4691-81e2-6847a924ba02",
       "nom": "sdsqfsqf",
-      "champs": []
+      "champs": [
+        {
+          "identifiant": "6",
+          "obligatoire": false
+        }
+      ]
     },
     {
       "identifiant": "48b86e6e-f87f-4d01-8afe-52b9af19c5e9",

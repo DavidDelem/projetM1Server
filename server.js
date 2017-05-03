@@ -5,6 +5,7 @@ var cors = require('cors');
 
 var whitelist = [
     'http://localhost:8080',
+    'http://127.0.0.1'
 ];
 
 var corsOptions = {

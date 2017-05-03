@@ -6,7 +6,8 @@
       "type": "TOUTES_BIODATAS_ENVOYEES",
       "lu": true,
       "details": {
-        "projet": "identifiantProjet"
+        "nom": "Nom du projet",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
       }
     },
     {
@@ -15,7 +16,8 @@
       "type": "DELEGATION_INVITATION",
       "lu": true,
       "details": {
-        "projet": "2"
+        "nom": "Nom dsu projet",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
       }
     },
     {
@@ -24,25 +26,78 @@
       "type": "DATE_LIMITE_ATTEINTE",
       "lu": true,
       "details": {
-        "projet": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
+        "nom": "Nom dus projet",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
       }
     },
     {
       "identifiant": "1cbc188a-393d-4658-a497-8be5bd5c9612",
       "date": 1493211600339,
       "type": "DATE_LIMITE_ATTEINTE",
-      "lu": false,
+      "lu": true,
       "details": {
-        "projet": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b"
+        "nom": "Nom du projetz",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
       }
     },
     {
       "identifiant": "f4220193-c532-4c7f-8f89-5f3eec927f49",
       "date": 1493650800495,
       "type": "TOUTES_BIODATAS_ENVOYEES",
-      "lu": false,
+      "lu": true,
       "details": {
-        "projet": "fd14c308-7993-4228-bf30-0dd5ebf8b37f"
+        "nom": "Nom du eprojet",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
+      }
+    },
+    {
+      "identifiant": "95680042-0e64-4939-ac1f-7693b838deed",
+      "date": 1493721277298,
+      "type": "DELEGATION_INVITATION",
+      "lu": true,
+      "details": {
+        "nom": "Nome du projet",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
+      }
+    },
+    {
+      "identifiant": "29f674d9-6ea9-4e36-9d6f-87ae944328aa",
+      "date": 1493725335518,
+      "type": "DELEGATION_INVITATION",
+      "lu": true,
+      "details": {
+        "nom": "Nom duse projet",
+        "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f"
+      }
+    },
+    {
+      "identifiant": "296fb637-a88d-4cee-87a7-e2a87082be83",
+      "date": 1493761105897,
+      "type": "DELEGATION_INVITATION",
+      "lu": true,
+      "details": {
+        "nom": "Date limite J+7",
+        "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
+      }
+    },
+    {
+      "identifiant": "a31009b1-4c7a-41ad-b174-7ec87e112346",
+      "date": 1493761232453,
+      "type": "DELEGATION_INVITATION",
+      "lu": true,
+      "details": {
+        "nom": "Date limite J+7",
+        "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
+      }
+    },
+    {
+      "identifiant": "02079811-a85a-4b86-9871-05ead38dca94",
+      "date": 1493816400858,
+      "type": "DATE_LIMITE_ATTEINTE",
+      "lu": true,
+      "details": {
+        "nom": "Date limite J+7",
+        "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
       }
     }
   ]

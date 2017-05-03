@@ -13,29 +13,37 @@ module.exports = function(app) {
     app.use(auth.initialize());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-
     
-    app.get("/historique", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            historiqueDAO.get(moment().subtract(30, 'days').format('x'), function(historique) {
-                res.json(historique);
-            });
+    app.use('/administration', auth.authenticate(), function (req, res, next) {
+        if(req.user.type === 'administrateur') {
+            next(); 
         } else {
             res.sendStatus(401);
         }
-    });  
+    });
+
+    /* Historique des événements pour le fil d'actualité                     */
+    /* Type: GET                                                             */
+    /* Paramètres: AUCUNS                                                    */
     
-    app.put("/historique/:identifiant", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            if(req.params.identifiant && req.body.lu == true || req.body.lu == false) {
-                historiqueDAO.update(req.params.identifiant, req.body.lu, function(historique) {
-                    res.sendStatus(200);
-                }); 
-            } else {
-                res.sendStatus(400);
-            }
+    app.get("/administration/historique", function(req, res) {  
+        historiqueDAO.get(moment().subtract(30, 'days').format('x'), function(historique) {
+            res.json(historique);
+        });
+    }); 
+    
+    /* Indiquer que l'historique à été vu ou non                                      */
+    /* Type: PUT                                                                      */
+    /* Paramètres: identifiant -> Identifiant de l'élément de l'historique            */
+    /*             lu -> true pour marquer comme lu, false pour marque comme non-lu   */
+    
+    app.put("/administration/historique/:identifiant", function(req, res) {  
+        if(req.params.identifiant && (req.body.lu == true || req.body.lu == false)) {
+            historiqueDAO.update(req.params.identifiant, req.body.lu, function(historique) {
+                res.json(req.body.lu);
+            }); 
         } else {
-            res.sendStatus(401);
+            res.sendStatus(400);
         }
     });    
     

@@ -4,34 +4,23 @@ module.exports = function(app) {
     var bodyParser = require('body-parser');  
     var async = require('async');
     
-    var invitationsDAO = require('../dao/invitationsjson.js');
+    var invitationsDAO = require('../dao/invitations.js');
     
     var auth = require("../authentification/auth.js")();  
     var cfg = require("../authentification/config.js");  
      
     app.use(auth.initialize());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    app.use(bodyParser.json());  
 
+    /* Historique du dossier d'une invitation pour le visiteur               */
+    /* Type: GET                                                             */
+    /* Paramètres: AUCUNS                                                    */
     
-    app.get("/invitations/:invitation/historique", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            invitationsDAO.getHistorique(req.params.invitation, function(historique) {
-                res.json(historique);
-            });
-        } else {
-            res.sendStatus(401);
-        }
-    });    
-    
-    app.get("/visiteur/invitation/historique", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'visiteur') {
-            invitationsDAO.getHistorique(req.user.identifiant, function(historique) {
-                res.json(historique);
-            });
-        } else {
-            res.sendStatus(401);
-        }
+    app.get("/visiteurs/invitation/historique", function(req, res) {  
+        invitationsDAO.getHistorique(req.user.identifiant, function(historique) {
+            res.json(historique);
+        });
     });    
     
 }

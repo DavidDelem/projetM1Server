@@ -10,39 +10,12 @@
       "delegation": true
     },
     {
-      "identifiant": "2",
-      "nom": "Projet ISEN",
-      "dateCreation": 1489675774000,
-      "dateLimite": 1492725600000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "cefb1017-94e1-423b-ac72-543b5282ab59",
-      "nom": "Grand projet",
-      "dateCreation": 1489589374000,
-      "dateLimite": 1487286000000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "bac8b46c-ae8f-4ea5-8d62-4857bc74d5ba",
-      "nom": "Projet créé hier",
-      "dateCreation": 1491415015727,
-      "dateLimite": 1492034400000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "rappels": true,
-      "delegation": true
-    },
-    {
       "identifiant": "9c4b95cd-0c82-4845-b3b6-380bba31972f",
       "nom": "Nom du projet",
       "dateCreation": 1491427264526,
       "dateLimite": 1498082400000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "rappels": true,
+      "rappels": false,
       "delegation": true
     },
     {
@@ -85,16 +58,25 @@
       "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8",
       "nom": "Date limite J+7",
       "dateCreation": 1492464113098,
-      "dateLimite": 1493071200000,
+      "dateLimite": 1493848800000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
-      "delegation": false
+      "delegation": true
     },
     {
       "identifiant": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
       "nom": "Date limite J+2 autre",
       "dateCreation": 1492464168137,
       "dateLimite": 1496181600000,
+      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "rappels": true,
+      "delegation": true
+    },
+    {
+      "identifiant": "59e8087c-52c1-4338-a5b3-22a211e464f2",
+      "nom": "hello",
+      "dateCreation": 1493819198238,
+      "dateLimite": 1493848800000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
       "rappels": true,
       "delegation": true

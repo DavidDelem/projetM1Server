@@ -6,7 +6,18 @@
     <div style="width: 70%; color: #222222; margin-left: 15%;">
         <h2>Bonjour,</h2>
         <p>Nous vous confirmons la bonne réception de vos biodatas.</p>
-        <p>Elles seront vérifiées par un administrateur avant d'être envoyés aux autorités.</p>
+        <p>Elles seront contrôlées par un administrateur avant d'être envoyés aux autorités.</p>
     </div>
     <div style="height: 25px; width: 100%;"></div>
+        <p>Voici une copie des données reçues (les éventuels fichiers se trouvent en piéce jointe):</p>
+            <div style="height: 10px; width: 100%;"></div>
+            <div style="background-color: #fff; width: 70%; margin-left: 15%;">
+                <div style="height: 10px; width: 100%;"></div>
+                <div style="width: 80%; margin-left: 10%;">
+                    {% for biodata in biodatas %}
+                        <p>{{biodata.nom}} : {{biodata.saisie}}</p>
+                    {% endfor %}
+                </div>
+                <div style="height: 10px; width: 100%;"></div>
+            </div>
 </div>

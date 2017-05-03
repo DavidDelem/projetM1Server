@@ -5,7 +5,9 @@ module.exports = function(app) {
     var async = require('async');
     
     var profilsDAO = require('../dao/profilsformulaires.js');
+    var invitationsDAO = require('../dao/invitations.js');
     var champsDAO = require('../dao/champs.js');
+    var projetsDAO = require('../dao/projets.js');
     var mail = require('../mail/mail.js');
     
     var auth = require("../authentification/auth.js")();  
@@ -21,18 +23,33 @@ module.exports = function(app) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     
+    /* Savoir si les biodatas sont envoyées ou non */
+    app.get("/biodatas", auth.authenticate(), function(req, res) {  
+        if (req.user.type === 'visiteur') {
+            invitationsDAO.getHistorique(req.user.identifiant, function(historique) {
+                if(historique[historique.length-1].type != "RECEPTION_INVITATION") {
+                    console.log(true);
+                    res.json(true);
+                } else {
+                    res.json(false);
+                }
+            });
+        } else {
+            res.sendStatus(401);
+        } 
+    });
+    
     /* Envoi des biodatas */
     
     app.post("/biodatas", auth.authenticate(), upload.array('fichiers', 10), function(req, res) {  
         if (req.user.type === 'visiteur') {
-            //console.log(req.files);
             
             var erreurs = [];
             var biodatas = [];
             var fichiers = [];
             
             var champs = JSON.parse(req.body.champs);
-            
+            //console.log(champs);
             async.eachSeries(champs, function iteratee(champ, callback) { 
                 if(champ.obligatoire == true && _.isEmpty(champ.saisie) && champ.type.indexOf('fichier') == -1) {
                     erreurs.push(champ);
@@ -41,10 +58,14 @@ module.exports = function(app) {
                     // On ne fait rien, c'est un champ facultatif
                 } else {
                     if(champ.type.indexOf('fichier') !== -1) {
-                        fichier = _.find(req.files, { 'originalname': champ.saisie.fichier });
-                        var resultat = traitementFichier(champ, fichier);
-                        if(resultat != false) {
-                            fichiers.push(resultat);
+                        if(req.files) {
+                            fichier = _.find(req.files, { 'originalname': champ.saisie.fichier });
+                            var resultat = traitementFichier(champ, fichier);
+                            if(resultat != false) {
+                                fichiers.push(resultat);
+                            } else {
+                                erreurs.push(champ);
+                            }
                         } else {
                             erreurs.push(champ);
                         }
@@ -66,10 +87,24 @@ module.exports = function(app) {
                 callback();
             }, function done() {
                 if(_.isEmpty(erreurs)) {
-                    mail.sendBiodatas(req.user, biodatas, fichiers, function(response) {
-                        res.json(true);
+                    projetsDAO.getByIdentifiant(req.user.projet, function(projet) {
+                        mail.sendBiodatas(req.user.email, projet.nom, biodatas, fichiers, function(response) {
+                            mail.sendConfirmationBiodatas(req.user.email, projet.nom, biodatas, fichiers, function(response) {
+                                invitationsDAO.addToHistorique(req.user.identifiant, 'ENVOI_BIODATAS', function(historique) {
+                                    res.json(true);
+                                });
+                            });
+                        });
                     });
                 } else {
+                    console.log(erreurs);
+//                    var erreursTest = [{identifiant:"4",
+//                                        nom:"Numéro de téléphone",
+//                                        type:"texte_telephone",
+//                                        coche:true,
+//                                        obligatoire:true,
+//                                        saisie:{telephone:"iiiiiiiiiiiiiiiiiiiiiiiiiiii"}
+//                                       }];
                     res.json(erreurs);
                 }
             });
@@ -77,6 +112,7 @@ module.exports = function(app) {
     });
     
     function traitementFichier(champ, fichier) {
+        console.log('TRAITEMENT FICHIER');
         var fichierMail = {
             filename: fichier.originalname,
             content: fichier.buffer,

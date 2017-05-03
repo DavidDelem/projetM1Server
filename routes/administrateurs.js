@@ -13,22 +13,31 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     
-    /* Récupération de la liste des rappels */
+    /* Authentification                                     */
     
-    app.get("/administrateurs", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            administrateursDAO.getAll(function(administrateurs) {
-                res.json(administrateurs);
-            });
+    app.use('/administrateurs', auth.authenticate(), function (req, res, next) {
+        if(req.user.type === 'administrateur') {
+            next(); 
         } else {
             res.sendStatus(401);
         }
     });
     
-    /* Ajout d'un administrateur */
+    /* Récupération de la liste des administrateurs         */
+    /* Type: GET                                            */
+    /* Paramètres: AUCUNS                                   */
     
-    app.post("/administrateurs", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
+    app.get("/administrateurs", function(req, res) {  
+        administrateursDAO.getAll(function(administrateurs) {
+            res.json(administrateurs);
+        });
+    });
+    
+    /* Ajout d'un ou plusieurs administrateurs                          */
+    /* Type: POST                                                       */
+    /* Paramètres: administrateurs -> liste d'emails et mots de passe   */
+    
+    app.post("/administrateurs", function(req, res) {  
             if(req.body.administrateurs) {
                 async.eachSeries(req.body.administrateurs, function iteratee(administrateur, callback) {
                     if(administrateur.email != '' && administrateur.password != '') {
@@ -44,24 +53,19 @@ module.exports = function(app) {
             } else {
                 res.sendStatus(400);
             }
-        } else {
-            res.sendStatus(401);
-        }
     });
     
-    /* Suppression d'un administreur */
+    /* Suppression d'un administrateur                                  */
+    /* Type: DELETE                                                     */
+    /* Paramètres: identifiant -> identifiant d'un administrateur       */
     
-    app.delete("/administrateurs", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') { 
-            if(req.body.identifiant) {
-                administrateursDAO.remove(req.body.identifiant, function(result) {
-                    res.sendStatus(200);
-                });    
-            } else {
-                res.sendStatus(400);
-            }
+    app.delete("/administrateurs", function(req, res) {  
+        if(req.body.identifiant) {
+            administrateursDAO.remove(req.body.identifiant, function(result) {
+                res.sendStatus(200);
+            });    
         } else {
-            res.sendStatus(401);
+            res.sendStatus(400);
         }
     });
     

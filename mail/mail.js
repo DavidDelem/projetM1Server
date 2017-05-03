@@ -57,7 +57,7 @@ var sendPass = function(email, identifiant, password, callback) {
     });
 }
 
-var sendReponseValider = function(email, message, callback) {
+var sendReponseValidationAutoritees = function(email, message, callback) {
     
     var datas = {
         message: message
@@ -69,21 +69,22 @@ var sendReponseValider = function(email, message, callback) {
     });
 }
 
-var sendReponseNonValiderAu = function(email, message, callback) {
+var sendReponseRefusAutoritees = function(email, message, callback) {
     
     var datas = {
         message: message
     }
     
-    console.log(email);
+    console.log('message:');
+    console.log(message);
     
     var mailContentHtml = renderMailContentHtml('reponse-finale-negative.html', datas);
-    sendMail(email, 'SeaTestBase Biodatas - Réponse des autorités concernant votre venue', mailContentHtml, function(response) {
+    sendMail(email, 'Sea Test Base Biodatas - Réponse des autorités concernant votre venue', mailContentHtml, function(response) {
         callback();
     });
 }
 
-var sendReponseNonValider = function(email, messageExplicatif, callback) {
+var sendReponseRefusBiodatas = function(email, messageExplicatif, callback) {
     
     var datas = {
         messageExplicatif: messageExplicatif
@@ -91,12 +92,25 @@ var sendReponseNonValider = function(email, messageExplicatif, callback) {
     
     var mailContentHtml = renderMailContentHtml('reponse-negative.html', datas);
     console.log(mailContentHtml);
-    sendMail(email, 'SeaTestBase Biodatas - Problème concernant les données reçues', mailContentHtml, function(response) {
+    sendMail(email, 'Sea Test Base Biodatas - Problème concernant les données reçues', mailContentHtml, function(response) {
         callback();
     });
 }
 
-var sendBiodatas = function(user, biodatas, fichiers, callback) {
+var sendConfirmationBiodatas = function(email, projet, biodatas, fichiers, callback) {
+    
+    var datas = {
+        biodatas: biodatas
+    }
+    
+    var mailContentHtml = renderMailContentHtml('confirmation-biodatas.html', datas);
+    console.log(mailContentHtml);
+    sendMailFiles(email, 'Sea Test Base Biodatas - Récapitulatif des données envoyées', mailContentHtml, fichiers, function(response) {
+        callback();
+    });
+}
+
+var sendBiodatas = function(email, projet, biodatas, fichiers, callback) {
     
     var datas = {
         biodatas: biodatas
@@ -104,7 +118,7 @@ var sendBiodatas = function(user, biodatas, fichiers, callback) {
     
     var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
     console.log(mailContentHtml);
-    sendMailFiles('biodataisen@gmail.com', 'Biodatas VISITEUR-EMAIL VISITEUR-PROJET', mailContentHtml, fichiers, function(response) {
+    sendMailFiles('biodataisen@gmail.com', 'Biodatas - ' + projet + ' - ' + email, mailContentHtml, fichiers, function(response) {
         callback();
     });
 }
@@ -159,8 +173,9 @@ module.exports = {
     sendRappel: sendRappel,
     sendReponse: sendReponse,
     sendBiodatas: sendBiodatas,
+    sendConfirmationBiodatas: sendConfirmationBiodatas,
     sendPass: sendPass,
-    sendReponseValider: sendReponseValider,
-    sendReponseNonValiderAu: sendReponseNonValiderAu,
-    sendReponseNonValider: sendReponseNonValider
+    sendReponseValidationAutoritees: sendReponseValidationAutoritees,
+    sendReponseRefusAutoritees: sendReponseRefusAutoritees,
+    sendReponseRefusBiodatas: sendReponseRefusBiodatas
 }

@@ -13,56 +13,66 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     
-    /* Récupération de la liste des rappels */
+    app.use('/administration', auth.authenticate(), function (req, res, next) {
+        if(req.user.type === 'administrateur') {
+            next(); 
+        } else {
+            res.sendStatus(401);
+        }
+    });
     
-    app.get("/rappels", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            rappelsDAO.getAll(function(rappels) {
-                res.json(rappels);
+    /* Récupération de la liste des rappels                 */
+    /* Type: GET                                            */
+    /* Paramètres: AUCUNS                                   */
+    
+    app.get("/administration/rappels", function(req, res) {  
+        
+        rappelsDAO.getAll(function(rappels) {
+            res.json(rappels);
+        });
+        
+    });
+    
+    /* Récupération de la configuration globale des rappels */
+    /* Type: GET                                            */
+    /* Paramètres: AUCUNS                                   */
+    
+    app.get("/administration/rappels/configuration", function(req, res) {  
+        
+        rappelsDAO.getConfiguration(function(configuration) {
+            res.json(configuration);
+        });
+        
+    });
+    
+    /* Ajout d'un rappel                            */
+    /* Type: POST                                   */
+    /* Paramètres: nbJours -> le nombre de jours    */
+
+    app.post("/administration/rappels", function(req, res) {
+        
+        if(req.body.nbJours) {
+            rappelsDAO.count(req.body.nbJours, function(result) {
+                if(result == 0) {
+                    rappelsDAO.add(req.body.nbJours , function(result) {
+                        res.sendStatus(200);
+                    }); 
+                } else {
+                    res.sendStatus(400);
+                }
             });
         } else {
-            res.sendStatus(401);
+            res.sendStatus(400);
         }
+        
     });
     
-    app.get("/rappels/configuration", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            rappelsDAO.getConfiguration(function(configuration) {
-                res.json(configuration);
-            });
-        } else {
-            res.sendStatus(401);
-        }
-    });
+    /* Suppression d'un rappel                      */
+    /* Type: DELETE                                 */
+    /* Paramètres: nbJours -> le nombre de jours    */
     
-    /* Ajout d'un rappel */
-    
-    app.post("/rappels", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            
-            if(req.body.nbJours) {
-                    rappelsDAO.count(req.body.nbJours, function(result) {
-                        if(result == 0) {
-                            rappelsDAO.add(req.body.nbJours , function(result) {
-                            res.json(result);
-                        }); 
-                    } else {
-                        res.sendStatus(400);
-                    }
-                });
-            } else {
-                res.sendStatus(400);
-            }
-            
-        } else {
-            res.sendStatus(401);
-        }
-    });
-    
-    /* Suppression d'un rappel */
-    
-    app.delete("/rappels", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') { 
+    app.delete("/administration/rappels", function(req, res) { 
+        
             if(req.body.nbJours) {
                 rappelsDAO.remove(req.body.nbJours , function(result) {
                     res.json(result);
@@ -70,32 +80,29 @@ module.exports = function(app) {
             } else {
                 res.sendStatus(400);
             }
-        } else {
-            res.sendStatus(401);
-        }
+        
     });
     
-    /* Activation et désactivation globale des rappels */
     
-    app.put("/rappels/configuration/activation", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            if(req.body.activation) {
-                if(req.body.activation == "true") {   
-                    rappelsDAO.activerRappels(function(result) {
-                        res.json(result);
-                    });
-                } else {
-                    rappelsDAO.desactiverRappels(function(result) {
-                        res.json(result);
-                    });
-                }
+    /* Activation et désactivation globale des rappels  */
+    /* Type: PUT                                        */
+    /* Paramètres: activation -> true ou false          */
+    
+    
+    app.put("/administration/rappels/configuration/activation", function(req, res) {  
+        
+            if(req.body.activation && req.body.activation == "true") {
+                rappelsDAO.activerRappels(function(result) {
+                    res.sendStatus(200);
+                });
+            } else if (req.body.activation && req.body.activation == "false") {
+                 rappelsDAO.desactiverRappels(function(result) {
+                    res.sendStatus(200);
+                });
             } else {
                 res.sendStatus(400);
             }
-            
-        } else {
-            res.sendStatus(401);
-        }
+        
     });
     
 }

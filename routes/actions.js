@@ -4,7 +4,7 @@ module.exports = function(app) {
     var bodyParser = require('body-parser');  
     var async = require('async');
 
-    var invitationsDAO = require('../dao/invitationsjson.js');
+    var invitationsDAO = require('../dao/invitations.js');
     var mail = require('../mail/mail.js');
     
     var auth = require("../authentification/auth.js")();  
@@ -14,23 +14,38 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
 
-
-    app.put("/invitations/:invitation/validationbiodatas", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            invitationsDAO.addToHistorique(req.params.invitation, 'VALIDATION_BIODATAS', function(historique) {
-                res.json(historique);
-            });
+    /* Authentification                                     */
+    
+    app.use('/administration', auth.authenticate(), function (req, res, next) {
+        if(req.user.type === 'administrateur') {
+            console.log('oooo');
+            next(); 
         } else {
             res.sendStatus(401);
         }
     });
     
-    app.put("/invitations/:invitation/refusbiodatas", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
+    /* Action validation des biodatas                           */
+    /* Type: PUT                                                */
+    /* Paramètres: invitation -> identifiant de l'invitation    */
+    
+    app.put("/administration/invitations/:invitation/validationbiodatas", function(req, res) {  
+        invitationsDAO.addToHistorique(req.params.invitation, 'VALIDATION_BIODATAS', function(historique) {
+            res.sendStatus(200);
+        });
+    });
+    
+    /* Action refus des biodatas                                         */
+    /* Type: PUT                                                         */
+    /* Paramètres: invitation -> identifiant de l'invitation             */
+    /*             envoiMail -> envoi d'un mail au visiteur si true      */
+    /*             messageExplicatif -> message personalisé dans le mail */
+    
+    app.put("/administration/invitations/:invitation/refusbiodatas", function(req, res) {  
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
                 invitationsDAO.addToHistorique(invitation[0].identifiant, 'REFUS_BIODATAS', function(historique) {
                     if(req.body.envoiMail) {
-                        mail.sendReponseNonValider(invitation[0].email, req.body.messageExplicatif, function(response) {
+                        mail.sendReponseRefusBiodatas(invitation[0].email, req.body.messageExplicatif || '', function(response) {
                             res.sendStatus(200);
                         });
                     } else {
@@ -38,27 +53,29 @@ module.exports = function(app) {
                     }
                 });
             });
-        } else {
-            res.sendStatus(401);
-        }
     });
     
-    app.put("/invitations/:invitation/transfertautorites", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
+    /* Action transfert aux autorités                               */
+    /* Type: PUT                                                    */
+    /* Paramètres: invitation -> identifiant de l'invitation        */
+    
+    app.put("/administration/invitations/:invitation/transfertautorites", function(req, res) {  
             invitationsDAO.addToHistorique(req.params.invitation, 'TRANSFERT_AUTORITES', function(historique) {
-                res.json(historique);
+                res.sendStatus(200);
             });
-        } else {
-            res.sendStatus(401);
-        }
     });
     
-    app.put("/invitations/:invitation/demandeaccessok", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
+    /* Action validation de la demande d'accèspar les autorités          */
+    /* Type: PUT                                                         */
+    /* Paramètres: invitation -> identifiant de l'invitation             */
+    /*             envoiMail -> envoi d'un mail au visiteur si true      */
+    /*             message -> message personalisé dans le mail           */
+    
+    app.put("/administration/invitations/:invitation/demandeaccessok", function(req, res) {  
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
                 invitationsDAO.addToHistorique(invitation[0].identifiant, 'DEMANDE_ACCESS_OK', function(historique) {
                     if(req.body.envoiMail) {
-                        mail.sendReponseValider(invitation[0].email, req.body.message, function(response) {
+                        mail.sendReponseValidationAutoritees(invitation[0].email, req.body.message || '', function(response) {
                             res.sendStatus(200);
                         });
                     } else {
@@ -66,17 +83,21 @@ module.exports = function(app) {
                     }
                 });
             });
-        } else {
-            res.sendStatus(401);
-        }
     });
     
-    app.put("/invitations/:invitation/demandeaccessko", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
+    /* Action refus de la demande d'accès par les autorités              */
+    /* Type: PUT                                                         */
+    /* Paramètres: invitation -> identifiant de l'invitation             */
+    /*             envoiMail -> envoi d'un mail au visiteur si true      */
+    /*             message -> message personalisé dans le mail           */
+    
+    app.put("/administration/invitations/:invitation/demandeaccessko", function(req, res) {  
+
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
                 invitationsDAO.addToHistorique(invitation[0].identifiant, 'DEMANDE_ACCESS_KO', function(historique) {
                     if(req.body.envoiMail) {
-                        mail.sendReponseNonValiderAu(invitation[0].email, req.body.message, function(response) {
+                        var message = req.body.message || '';
+                        mail.sendReponseRefusAutoritees(invitation[0].email, req.body.message || '', function(response) {
                             res.sendStatus(200);
                         });
                     } else {
@@ -84,18 +105,17 @@ module.exports = function(app) {
                     }
                 });      
             });
-        } else {
-            res.sendStatus(401);
-        }
     });
+        
+    /* Action retour à l'état précédent                         */
+    /* Type: PUT                                                */
+    /* Paramètres: invitation -> identifiant de l'invitation    */
     
-    app.put("/invitations/:invitation/retour", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'administrateur') {
-            invitationsDAO.retourHistorique(req.params.invitation, function(historique) {
-                res.sendStatus(200);
-            });
-        } else {
-            res.sendStatus(401);
-        }
+    app.put("/administration/invitations/:invitation/retour", function(req, res) {  
+
+        invitationsDAO.retourHistorique(req.params.invitation, function(historique) {
+            res.sendStatus(200);
+        });
+        
     });
 }

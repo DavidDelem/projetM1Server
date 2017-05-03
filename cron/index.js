@@ -3,7 +3,7 @@ var moment = require('moment');
 
 var projets = require('../dao/projets.js');
 var rappels = require('../dao/rappels.js');
-var invitations = require('../dao/invitationsjson.js');
+var invitations = require('../dao/invitations.js');
 var historique = require('../dao/historique.js');
 
 var mail = require('../mail/mail.js');
@@ -14,7 +14,13 @@ new CronJob('00 00 06 * * *', function() { // */3 * * * * *
     var date = moment().startOf('day').format('x');
     projets.getAll('dateLimite', date - 10, date, function(projets) {
         for(var projet of projets) {  
-            historique.add('DATE_LIMITE_ATTEINTE', projet.identifiant, function(response) {           
+            
+            var details = {
+                nom: projet.nom,
+                identifiant: projet.identifiant
+            }
+            
+            historique.add('DATE_LIMITE_ATTEINTE', details, function(response) {           
             });
         }      
     }); 
@@ -39,7 +45,13 @@ new CronJob('00 00 08 * * *', function() { // */3 * * * * *
                 }
                 
                 if(toutesBiodatasEnvoyees) {
-                     historique.add('TOUTES_BIODATAS_ENVOYEES', projet.identifiant, function(response) {
+                    
+                    var details = {
+                        nom: projet.nom,
+                        identifiant: projet.identifiant
+                    }
+                                
+                     historique.add('TOUTES_BIODATAS_ENVOYEES', details, function(response) {
                      });
                 }
             });
