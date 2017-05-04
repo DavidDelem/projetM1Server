@@ -138,7 +138,7 @@ module.exports = function(app) {
             }
         } else if(champ.type == 'texte_adresse') {
             if(champ.saisie.numero && champ.saisie.rue && champ.saisie.codePostal && champ.saisie.ville && champ.saisie.pays && champ.saisie.numero != '' && champ.saisie.rue != '' && champ.saisie.codePostal != '' && champ.saisie.ville != '' && champ.saisie.pays != '') {
-                callback(champ.saisie.numero + ' ' + champ.saisie.rue + ' ' + champ.saisie.codePostal + ' ' + champ.saisie.ville + ' ' + champ.saisie.pays);
+                callback(champ.saisie.numero + ' ' + champ.saisie.rue + ' ' + champ.saisie.codePostal + ' ' + champ.saisie.autreReponse + ' ' + champ.saisie.ville + ' ' + champ.saisie.pays);
             } else {
                 callback(false);
             }
@@ -149,9 +149,13 @@ module.exports = function(app) {
         } else if(champ.type == 'identite_nationalite') {
             callback(true);
         } else if(champ.type == 'vehicule_texte') {
-            callback(true);
+            if(/^[A-Z]{1,2}-[0-9]{1,3}-[A-Z]{1,2}$/.test(champ.saisie.immatriculation) || /^[0-9]{1,4}-[A-Z]{1,4}-[0-9]{1,2}$/.test(champ.saisie.immatriculation)) {
+                callback(champ.saisie.immatriculation);
+            } else {
+                callback(false);
+            }
         } else if(champ.type == 'texte_textarea') {
-            callback(true);
+            callback(champ.saisie.remarques);
         } else {
             callback(false); 
         }
