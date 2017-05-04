@@ -33,7 +33,7 @@ module.exports = function(app) {
     /* Type: GET                                                */
     /* Paramètres: AUCUNS                                       */
     
-    app.get("visiteurs/invitation/delegation", auth.authenticate(), function(req, res) {  
+    app.get("/visiteurs/invitation/delegation", function(req, res) {  
         if(req.user.projet) {
             projetsDAO.getByIdentifiant(req.user.projet, function(projet) {
                 res.json(projet.delegation);
@@ -47,7 +47,7 @@ module.exports = function(app) {
     /* Type: POST                                                            */
     /* Paramètres: emails -> Liste d'emails à qui l'invitation sera déléguée */
     
-    app.post("visiteurs/invitation/delegation", auth.authenticate(), function(req, res) {  
+    app.post("/visiteurs/invitation/delegation", function(req, res) {  
             if(req.body.emails && req.user.projet && req.user.identifiant) {
                 projetsDAO.getByIdentifiant(req.user.projet, function(projet) {
                     if(projet.delegation == true) {
@@ -55,7 +55,7 @@ module.exports = function(app) {
                             if(email.value && email.value != '') {
                                 invitationsDAO.add(req.user.projet, email.value, req.user.identifiant, function(identifiantInvitation) {
                                     invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
-                                        mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, 'DATE_LIMITE', function(response) {
+                                        mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, moment(projet.dateLimite, 'x').format('DD/MM/YYYY'), function(response) {
                                             callback();
                                         });
                                     });

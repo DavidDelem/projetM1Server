@@ -113,24 +113,6 @@
       ]
     },
     {
-      "identifiant": "93bc5065-4311-494c-b029-311cd9e78ad7",
-      "nom": "Visite ponctuelle",
-      "champs": [
-        {
-          "identifiant": "1",
-          "obligatoire": true
-        },
-        {
-          "identifiant": "5",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "6",
-          "obligatoire": false
-        }
-      ]
-    },
-    {
       "identifiant": "865752ba-db62-49a0-b54d-43be87842051",
       "nom": "Exemple de profil",
       "champs": [
@@ -229,21 +211,6 @@
           "obligatoire": true
         }
       ]
-    },
-    {
-      "identifiant": "280b6254-a7bd-4691-81e2-6847a924ba02",
-      "nom": "sdsqfsqf",
-      "champs": [
-        {
-          "identifiant": "6",
-          "obligatoire": false
-        }
-      ]
-    },
-    {
-      "identifiant": "48b86e6e-f87f-4d01-8afe-52b9af19c5e9",
-      "nom": "letest",
-      "champs": {}
     }
   ]
 }

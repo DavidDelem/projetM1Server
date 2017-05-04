@@ -230,20 +230,22 @@ module.exports = function(app) {
     
     app.post("/administration/projets/:projet/invitations", function(req, res) {  
         if(req.params.projet && req.body.emails) {
-            async.eachSeries(req.body.emails, function iteratee(email, callback) {
-                if(email.value != '') {
-                    invitationsDAO.add(req.params.projet, email.value, "", function(identifiantInvitation) {
-                        invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
-                            mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, 'DATE_LIMITE', function(response) {
-                                callback();
+            projetsDAO.getByIdentifiant(req.params.projet, function(projet) {
+                async.eachSeries(req.body.emails, function iteratee(email, callback) {
+                    if(email.value != '') {
+                        invitationsDAO.add(req.params.projet, email.value, "", function(identifiantInvitation) {
+                            invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
+                                mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, moment(projet.dateLimite, 'x').format('DD/MM/YYYY'), function(response) {
+                                    callback();
+                                });
                             });
-                        });
-                    });  
-                } else {
-                    callback();
-                }
-            }, function done() {
-                res.sendStatus(200);
+                        });  
+                    } else {
+                        callback();
+                    }
+                }, function done() {
+                    res.sendStatus(200);
+                });
             });
         } else {
             res.sendStatus(400);

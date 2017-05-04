@@ -848,6 +848,21 @@
           "type": "RECEPTION_INVITATION"
         }
       ]
+    },
+    {
+      "identifiant": "HkMeGOdkZ",
+      "password": "rJgzezdd1Z",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1493889514427,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
     }
   ]
 }
