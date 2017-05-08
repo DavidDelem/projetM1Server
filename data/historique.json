@@ -84,7 +84,7 @@
       "identifiant": "a31009b1-4c7a-41ad-b174-7ec87e112346",
       "date": 1493761232453,
       "type": "DELEGATION_INVITATION",
-      "lu": true,
+      "lu": false,
       "details": {
         "nom": "Date limite J+7",
         "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"
@@ -94,7 +94,7 @@
       "identifiant": "02079811-a85a-4b86-9871-05ead38dca94",
       "date": 1493816400858,
       "type": "DATE_LIMITE_ATTEINTE",
-      "lu": true,
+      "lu": false,
       "details": {
         "nom": "Date limite J+7",
         "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8"

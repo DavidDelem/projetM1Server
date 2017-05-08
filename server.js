@@ -1,3 +1,5 @@
+#!/usr/bin/env nodejs
+
 var express = require('express');
 var cors = require('cors');
 
@@ -5,7 +7,8 @@ var cors = require('cors');
 
 var whitelist = [
     'http://localhost:8080',
-    'http://127.0.0.1'
+    'http://127.0.0.1',
+    'http://192.168.224.212'
 ];
 
 var corsOptions = {

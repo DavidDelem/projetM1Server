@@ -11,7 +11,9 @@ module.exports = function(app) {
     var mail = require('../mail/mail.js');
     
     var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");  
+    var cfg = require("../authentification/config.js");
+    
+    var moment = require('moment');
     var _ = require('lodash');
     
     var multer  = require('multer');
@@ -143,11 +145,13 @@ module.exports = function(app) {
                 callback(false);
             }
         } else if(champ.type == 'texte_date') {
-            if(champ.saisie.date && champ.saisie.date != '') {
+            if(champ.saisie.date && moment(champ.saisie.date).isValid()) {
                 callback(champ.saisie.date);
+            } else {
+                callback(false);
             }
         } else if(champ.type == 'identite_nationalite') {
-            callback(true);
+            callback(true); // A REVOIR
         } else if(champ.type == 'vehicule_texte') {
             if(/^[A-Z]{1,2}-[0-9]{1,3}-[A-Z]{1,2}$/.test(champ.saisie.immatriculation) || /^[0-9]{1,4}-[A-Z]{1,4}-[0-9]{1,2}$/.test(champ.saisie.immatriculation)) {
                 callback(champ.saisie.immatriculation);

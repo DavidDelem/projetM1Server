@@ -6,7 +6,7 @@
       "champs": [
         {
           "identifiant": "1",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "2",
@@ -14,7 +14,27 @@
         },
         {
           "identifiant": "3",
-          "obligatoire": true
+          "obligatoire": false
+        },
+        {
+          "identifiant": "6",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "7",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "8",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "9",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "12",
+          "obligatoire": false
         }
       ]
     },
@@ -156,7 +176,7 @@
       "champs": [
         {
           "identifiant": "1",
-          "obligatoire": true
+          "obligatoire": false
         },
         {
           "identifiant": "2",
