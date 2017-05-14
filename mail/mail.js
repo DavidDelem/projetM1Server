@@ -2,16 +2,29 @@ const nunjucks = require( 'nunjucks' );
 nunjucks.configure('mail/templates', { autoescape: true });
 
 const nodemailer = require('nodemailer');
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'biodataisen@gmail.com',
-        pass: 'biodataisen1234'
-    },
-    tls:{
-        rejectUnauthorized: false
-    }
-});
+var smtpTransport = require('nodemailer-smtp-transport');
+//const transporter = nodemailer.createTransport({
+//    service: 'gmail',
+//    auth: {
+//        user: 'biodataisen@gmail.com',
+//        pass: 'biodataisen1234'
+//    },
+//    tls:{
+//        rejectUnauthorized: false
+//    }
+//});
+
+const transporter = nodemailer.createTransport(smtpTransport({
+        host: 'ssl0.ovh.net',
+        port: 465,
+        secureConnection: true, //true or false
+        tls: { rejectUnauthorized: false },
+        auth: {
+            user: 'biodata@celadon.asso.fr',
+            pass: 'METTREPASSWORDICI'
+        },
+        debug: true
+    }));
 
 var sendInvitation = function(email, identifiant, password, dateLimite, callback) {
 
@@ -97,6 +110,19 @@ var sendReponseRefusBiodatas = function(email, messageExplicatif, callback) {
     });
 }
 
+var sendMessage = function(email, message, callback) {
+    
+    var datas = {
+        message: message
+    }
+    
+    var mailContentHtml = renderMailContentHtml('message.html', datas);
+    console.log(mailContentHtml);
+    sendMail(email, 'Sea Test Base Biodatas - Message d\'un administrateur', mailContentHtml, function(response) {
+        callback();
+    });
+}
+
 var sendConfirmationBiodatas = function(email, projet, biodatas, fichiers, callback) {
     
     var datas = {
@@ -133,12 +159,20 @@ var renderMailContentHtml = function(fileName, datas) {
 
 var sendMail = function(email, subject, htmlContent, callback) {
     var mailOptions = {
-        from: 'biodataisen@gmail.com',
+        from: 'biodata@celadon.asso.fr',
         to : email,
         subject: subject,
         html: htmlContent
     };
-    
+    // verify connection configuration
+transporter.verify(function(error, success) {
+   if (error) {
+        console.log(error);
+   } else {
+        console.log('Server is ready to take our messages');
+   }
+});
+
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return console.log(error);
@@ -152,7 +186,7 @@ var sendMail = function(email, subject, htmlContent, callback) {
 
 var sendMailFiles = function(email, subject, htmlContent, fichiers, callback) {
     let mailOptions = {
-        from: 'biodataisen@gmail.com',
+        from: 'biodata@celadon.asso.fr',
         to : email,
         subject: subject,
         html: htmlContent,
@@ -177,5 +211,6 @@ module.exports = {
     sendPass: sendPass,
     sendReponseValidationAutoritees: sendReponseValidationAutoritees,
     sendReponseRefusAutoritees: sendReponseRefusAutoritees,
-    sendReponseRefusBiodatas: sendReponseRefusBiodatas
+    sendReponseRefusBiodatas: sendReponseRefusBiodatas,
+    sendMessage: sendMessage
 }

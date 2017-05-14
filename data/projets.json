@@ -56,7 +56,7 @@
     },
     {
       "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8",
-      "nom": "Projet date limite",
+      "nom": "Date limite J+7",
       "dateCreation": 1492464113098,
       "dateLimite": 1493848800000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
@@ -67,9 +67,9 @@
       "identifiant": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
       "nom": "Date limite J+2 autre",
       "dateCreation": 1492464168137,
-      "dateLimite": 1494626400000,
+      "dateLimite": 1495231200000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "rappels": true,
+      "rappels": false,
       "delegation": true
     }
   ]

@@ -18,7 +18,6 @@ module.exports = function(app) {
     
     app.use('/administration', auth.authenticate(), function (req, res, next) {
         if(req.user.type === 'administrateur') {
-            console.log('oooo');
             next(); 
         } else {
             res.sendStatus(401);
@@ -116,6 +115,25 @@ module.exports = function(app) {
         invitationsDAO.retourHistorique(req.params.invitation, function(historique) {
             res.sendStatus(200);
         });
+        
+    });
+    
+    /* Action envoi d'un message par mail                       */
+    /* Type: PUT                                                */
+    /* Paramètres: invitation -> identifiant de l'invitation    */
+    /* Paramètres: message -> message contenu dans l'email      */
+    
+    app.put("/administration/invitations/:invitation/message", function(req, res) {  
+
+         if(req.body.message && req.body.message != '') {
+            invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
+                mail.sendMessage(invitation[0].email, req.body.message, function(response) {
+                    res.sendStatus(200);
+                });
+            });   
+         } else {
+            res.sendStatus(400);
+         }
         
     });
 }

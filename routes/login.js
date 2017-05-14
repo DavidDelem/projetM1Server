@@ -22,7 +22,7 @@ module.exports = function(app) {
         if (req.body.identifiant && req.body.password) {
             administrateurs.getByIdentifiantAndPassword(req.body.identifiant, req.body.password, function(result) {
                 if (result.length !== 0) {
-                    var payload = { id: result[0].identifiant, type: 'administrateur', exp: Date.now() + 3600000 }; 
+                    var payload = { id: result[0].identifiant, type: 'administrateur', exp: Date.now() + 21600000 }; 
                     var token = jwt.encode(payload, cfg.jwtSecret);
                     res.json({ token: token });
                 } else {
@@ -40,7 +40,7 @@ module.exports = function(app) {
         if (req.body.identifiant && req.body.password) {
             invitations.getByIdentifiantAndPassword(req.body.identifiant, req.body.password, function(result) {
                 if (result.length !== 0) {
-                    var payload = { id: result[0].identifiant, type: 'visiteur', exp: Date.now() + 3600000 };
+                    var payload = { id: result[0].identifiant, type: 'visiteur', exp: Date.now() + 21600000 };
                     var token = jwt.encode(payload, cfg.jwtSecret);
                     res.json({ token: token });
                 } else {

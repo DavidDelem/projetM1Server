@@ -62,17 +62,18 @@ module.exports = function(app) {
                     if(champ.type.indexOf('fichier') !== -1) {
                         if(req.files) {
                             fichier = _.find(req.files, { 'originalname': champ.saisie.fichier });
-                            var resultat = traitementFichier(champ, fichier);
-                            if(resultat != false) {
-                                fichiers.push(resultat);
-                            } else {
-                                erreurs.push(champ);
-                            }
+                            traitementFichier(champ, fichier, function(fichier) {
+                                if(fichier != false) {
+                                    fichiers.push(fichier);
+                                } else {
+                                    erreurs.push(champ);
+                                }
+                            });
                         } else {
                             erreurs.push(champ);
                         }
                         
-                    } else if(champ.type.indexOf('texte') !== -1 || champs.type == 'identite_nationalite') {
+                    } else if (champ.type.indexOf('texte') !== -1 || champs.type == 'identite_nationalite') {
                         traitementTexte(champ, function(saisie) {
                             if(saisie !== false) {
                                 biodatas.push({nom: champ.nom, saisie: saisie})
@@ -113,15 +114,19 @@ module.exports = function(app) {
         }
     });
     
-    function traitementFichier(champ, fichier) {
+    function traitementFichier(champ, fichier, callback) {
         console.log('TRAITEMENT FICHIER');
-        var fichierMail = {
-            filename: fichier.originalname,
-            content: fichier.buffer,
-            contentType: fichier.mimetype
-        }
         
-        return fichierMail;
+        if(fichier.size != undefined && fichier.mimetype != undefined && fichier.size <= 5000000 && fichier.size >= 1000 && (fichier.mimetype == 'application/pdf' || fichier.mimetype == 'image/png' || fichier.mimetype == 'image/jpeg'  || fichier.mimetype == 'image/pjpeg')) {
+            var fichierMail = {
+                filename: champ.nom + '.' + fichier.originalname.split('.')[1],
+                content: fichier.buffer,
+                contentType: fichier.mimetype
+            }
+            callback(fichierMail);
+        } else {
+            callback(false);
+        }
     };
     
     function traitementTexte(champ, callback) {
