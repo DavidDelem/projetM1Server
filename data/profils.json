@@ -48,15 +48,27 @@
         },
         {
           "identifiant": "3",
-          "obligatoire": true
+          "obligatoire": false
         },
         {
           "identifiant": "4",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "5",
           "obligatoire": false
         },
         {
           "identifiant": "7",
-          "obligatoire": true
+          "obligatoire": false
+        },
+        {
+          "identifiant": "10",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "13",
+          "obligatoire": false
         }
       ]
     },
@@ -176,19 +188,15 @@
       "champs": [
         {
           "identifiant": "1",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "2",
           "obligatoire": false
         },
         {
-          "identifiant": "3",
-          "obligatoire": false
-        },
-        {
           "identifiant": "4",
-          "obligatoire": false
+          "obligatoire": true
         },
         {
           "identifiant": "5",
@@ -209,26 +217,6 @@
         {
           "identifiant": "9",
           "obligatoire": false
-        },
-        {
-          "identifiant": "10",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "11",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "12",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "13",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "14",
-          "obligatoire": true
         }
       ]
     }

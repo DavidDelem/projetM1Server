@@ -10,17 +10,8 @@ module.exports = function(app) {
     var cfg = require("../authentification/config.js");  
     var moment = require('moment');
     
-    app.use(auth.initialize());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    
-    app.use('/administration', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'administrateur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
 
     /* Historique des événements pour le fil d'actualité                     */
     /* Type: GET                                                             */

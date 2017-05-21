@@ -3,32 +3,18 @@ module.exports = function(app) {
     var jwt = require("jwt-simple");  
     var bodyParser = require('body-parser');  
     var async = require('async');
+    var moment = require('moment');
+    var _ = require('lodash');
     
     var invitationsDAO = require('../dao/invitations.js');
     var projetsDAO = require('../dao/projets.js');
     var historiqueDAO = require('../dao/historique.js');
     var mail = require('../mail/mail.js');
-        
-    var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");  
     
-    var moment = require('moment');
-    var _ = require('lodash');
-    
-    app.use(auth.initialize());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     
-    /* Authentification                                     */
-    
-    app.use('/visiteurs', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'visiteur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
-    
+
     /* Savoir si la délégation d'invitation est activée ou non  */
     /* Type: GET                                                */
     /* Paramètres: AUCUNS                                       */

@@ -8,33 +8,13 @@ module.exports = function(app) {
     var projetsDAO = require('../dao/projets.js');
     var profilsDAO = require('../dao/profilsformulaires.js');
     var mail = require('../mail/mail.js');
-        
-    var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");  
     
     var moment = require('moment');
     var _ = require('lodash');
     
-    app.use(auth.initialize());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     
-    app.use('/administration', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'administrateur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
-    
-    app.use('/visiteurs', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'visiteur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
-
     /* Récupération de la liste des projets                                  */
     /* Type: GET                                                             */
     /* Paramètres: tris -> critère de tris                                   */
@@ -102,14 +82,15 @@ module.exports = function(app) {
     /*             nom -> nouveau nom                                        */
     /*             dateLimite -> nouvelle date limite                        */
     /*             profil -> nouveau profil                                  */
+    /*             langue -> nouvelle langue                                 */
     
     app.put("/administration/projets/:projet", function(req, res) {  
-        if(req.params.projet && req.body.nom && req.body.dateLimite && req.body.profil) {
-            projetsDAO.updateInfos(req.params.projet, req.body.nom, parseInt(req.body.dateLimite), req.body.profil, function(projet) {
-                res.json(projet)
+        if(req.params.projet && req.body.nom && req.body.dateLimite && req.body.profil && req.body.langue) {
+            projetsDAO.updateInfos(req.params.projet, req.body.nom, parseInt(req.body.dateLimite), req.body.profil, req.body.langue, function(projet) {
+                res.sendStatus(200);
             }); 
         } else {
-            res.json(400);
+            res.sendStatus(400);
         }
     });
     
@@ -212,10 +193,11 @@ module.exports = function(app) {
     /* Paramètres: projet -> identifiant du projet      */
     /*             dateLimite -> date limite du projet  */
     /*             profil -> profil du projet           */
+    /*             langue -> profil du projet           */
     
     app.post("/administration/projets", function(req, res) {  
-        if(req.body.projet && req.body.dateLimite && req.body.profil) { 
-            projetsDAO.add(req.body.projet, parseInt(req.body.dateLimite), req.body.profil, function(projets) {
+        if(req.body.projet && req.body.dateLimite && req.body.profil && req.body.langue) { 
+            projetsDAO.add(req.body.projet, parseInt(req.body.dateLimite), req.body.profil, req.body.langue, function(projets) {
                 res.json(projets);
             }); 
         } else {
@@ -235,7 +217,12 @@ module.exports = function(app) {
                     if(email.value != '') {
                         invitationsDAO.add(req.params.projet, email.value, "", function(identifiantInvitation) {
                             invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
-                                mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, moment(projet.dateLimite, 'x').format('DD/MM/YYYY'), function(response) {
+                                mail.sendInvitation(invitation[0].email,
+                                                    invitation[0].identifiant,
+                                                    invitation[0].password,
+                                                    projet.langue,
+                                                    moment(projet.dateLimite, 'x').format('DD/MM/YYYY'),
+                                                    function(response) {
                                     callback();
                                 });
                             });

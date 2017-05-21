@@ -16,13 +16,14 @@ var getByIdentifiant = function(identifiant, callback) {
     callback(db.get('projets').find({ identifiant: identifiant }).cloneDeep().value());
 }
 
-var add = function (nom, dateLimite, profil, callback) {
+var add = function (nom, dateLimite, profil, langue, callback) {
     var dateCreation = Date.now();
     db.get('projets').push({ identifiant: uuid.v4(),
                              nom: nom,
                              dateCreation: dateCreation,
                              dateLimite: dateLimite,
                              profil: profil,
+                             langue: langue,
                              rappels: true,
                              delegation: true
                            }).write().then(function(projets){
@@ -30,10 +31,11 @@ var add = function (nom, dateLimite, profil, callback) {
     });
 }
 
-var updateInfos = function(identifiant, nom, dateLimite, profil, callback) {
+var updateInfos = function(identifiant, nom, dateLimite, profil, langue, callback) {
     db.get('projets').find({ identifiant: identifiant }).assign({ nom: nom,
                                                                   dateLimite: dateLimite,
-                                                                  profil: profil }).write().then(function(projets){
+                                                                  profil: profil,
+                                                                  langue: langue}).write().then(function(projets){
         callback(projets);
     });
 }

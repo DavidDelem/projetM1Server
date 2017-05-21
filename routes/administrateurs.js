@@ -5,29 +5,15 @@ module.exports = function(app) {
     var async = require('async');
     
     var administrateursDAO = require('../dao/administrateurs.js');
-    
-    var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");  
-     
-    app.use(auth.initialize());
+
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-    
-    /* Authentification                                     */
-    
-    app.use('/administrateurs', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'administrateur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
-    
+
     /* Récupération de la liste des administrateurs         */
     /* Type: GET                                            */
     /* Paramètres: AUCUNS                                   */
     
-    app.get("/administrateurs", function(req, res) {  
+    app.get("/administration/administrateurs", function(req, res) {  
         administrateursDAO.getAll(function(administrateurs) {
             res.json(administrateurs);
         });
@@ -37,7 +23,7 @@ module.exports = function(app) {
     /* Type: POST                                                       */
     /* Paramètres: administrateurs -> liste d'emails et mots de passe   */
     
-    app.post("/administrateurs", function(req, res) {  
+    app.post("/administration/administrateurs", function(req, res) {  
             if(req.body.administrateurs) {
                 async.eachSeries(req.body.administrateurs, function iteratee(administrateur, callback) {
                     if(administrateur.email != '' && administrateur.password != '') {
@@ -59,7 +45,7 @@ module.exports = function(app) {
     /* Type: DELETE                                                     */
     /* Paramètres: identifiant -> identifiant d'un administrateur       */
     
-    app.delete("/administrateurs", function(req, res) {  
+    app.delete("/administration/administrateurs", function(req, res) {  
         if(req.body.identifiant) {
             administrateursDAO.remove(req.body.identifiant, function(result) {
                 res.sendStatus(200);

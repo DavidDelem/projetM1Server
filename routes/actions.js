@@ -5,25 +5,12 @@ module.exports = function(app) {
     var async = require('async');
 
     var invitationsDAO = require('../dao/invitations.js');
+    var projetsDAO = require('../dao/projets.js');
     var mail = require('../mail/mail.js');
     
-    var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");  
-     
-    app.use(auth.initialize());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
 
-    /* Authentification                                     */
-    
-    app.use('/administration', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'administrateur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
-    
     /* Action validation des biodatas                           */
     /* Type: PUT                                                */
     /* Paramètres: invitation -> identifiant de l'invitation    */
@@ -42,14 +29,16 @@ module.exports = function(app) {
     
     app.put("/administration/invitations/:invitation/refusbiodatas", function(req, res) {  
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
-                invitationsDAO.addToHistorique(invitation[0].identifiant, 'REFUS_BIODATAS', function(historique) {
-                    if(req.body.envoiMail) {
-                        mail.sendReponseRefusBiodatas(invitation[0].email, req.body.messageExplicatif || '', function(response) {
+                projetsDAO.getByIdentifiant(invitation[0].identifiantProjet, function(projet) {
+                    invitationsDAO.addToHistorique(invitation[0].identifiant, 'REFUS_BIODATAS', function(historique) {
+                        if(req.body.envoiMail) {
+                            mail.sendReponseRefusBiodatas(invitation[0].email, projet.langue, req.body.messageExplicatif || '', function(response) {
+                                res.sendStatus(200);
+                            });
+                        } else {
                             res.sendStatus(200);
-                        });
-                    } else {
-                        res.sendStatus(200);
-                    }
+                        }
+                    });
                 });
             });
     });
@@ -72,14 +61,16 @@ module.exports = function(app) {
     
     app.put("/administration/invitations/:invitation/demandeaccessok", function(req, res) {  
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
-                invitationsDAO.addToHistorique(invitation[0].identifiant, 'DEMANDE_ACCESS_OK', function(historique) {
-                    if(req.body.envoiMail) {
-                        mail.sendReponseValidationAutoritees(invitation[0].email, req.body.message || '', function(response) {
+                projetsDAO.getByIdentifiant(invitation[0].identifiantProjet, function(projet) {
+                    invitationsDAO.addToHistorique(invitation[0].identifiant, 'DEMANDE_ACCESS_OK', function(historique) {
+                        if(req.body.envoiMail) {
+                            mail.sendReponseValidationAutoritees(invitation[0].email, projet.langue, req.body.message || '', function(response) {
+                                res.sendStatus(200);
+                            });
+                        } else {
                             res.sendStatus(200);
-                        });
-                    } else {
-                        res.sendStatus(200);
-                    }
+                        }
+                    });
                 });
             });
     });
@@ -93,15 +84,17 @@ module.exports = function(app) {
     app.put("/administration/invitations/:invitation/demandeaccessko", function(req, res) {  
 
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
-                invitationsDAO.addToHistorique(invitation[0].identifiant, 'DEMANDE_ACCESS_KO', function(historique) {
-                    if(req.body.envoiMail) {
-                        var message = req.body.message || '';
-                        mail.sendReponseRefusAutoritees(invitation[0].email, req.body.message || '', function(response) {
+                projetsDAO.getByIdentifiant(invitation[0].identifiantProjet, function(projet) {
+                    invitationsDAO.addToHistorique(invitation[0].identifiant, 'DEMANDE_ACCESS_KO', function(historique) {
+                        if(req.body.envoiMail) {
+                            var message = req.body.message || '';
+                            mail.sendReponseRefusAutoritees(invitation[0].email, projet.langue, req.body.message || '', function(response) {
+                                res.sendStatus(200);
+                            });
+                        } else {
                             res.sendStatus(200);
-                        });
-                    } else {
-                        res.sendStatus(200);
-                    }
+                        }
+                    });
                 });      
             });
     });
@@ -127,8 +120,10 @@ module.exports = function(app) {
 
          if(req.body.message && req.body.message != '') {
             invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
-                mail.sendMessage(invitation[0].email, req.body.message, function(response) {
-                    res.sendStatus(200);
+                projetsDAO.getByIdentifiant(invitation[0].identifiantProjet, function(projet) {
+                    mail.sendMessage(invitation[0].email, projet.langue, req.body.message, function(response) {
+                        res.sendStatus(200);
+                    });
                 });
             });   
          } else {

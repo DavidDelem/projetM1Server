@@ -3,72 +3,92 @@
     {
       "identifiant": "1",
       "nom": "Nom et prénom",
-      "type": "texte_nomprenom"
+      "type": "texte_nomprenom",
+      "etape": "identite"
     },
     {
       "identifiant": "2",
       "nom": "Date de naissance",
-      "type": "texte_date"
+      "type": "texte_date",
+      "etape": "identite"
     },
     {
       "identifiant": "3",
       "nom": "Adresse",
-      "type": "texte_adresse"
+      "type": "texte_adresse",
+      "etape": "identite"
     },
     {
       "identifiant": "4",
-      "nom": "Numéro de téléphone",
-      "type": "texte_telephone"
+      "nom": "Numéro de téléphone personnel",
+      "type": "texte_telephone",
+      "etape": "identite"
     },
     {
       "identifiant": "5",
-      "nom": "Nationalité",
-      "type": "identite_nationalite"
+      "nom": "Numéro de téléphone profesionnel",
+      "type": "texte_telephone",
+      "etape": "identite"
     },
     {
       "identifiant": "6",
-      "nom": "Carte d'identité",
-      "type": "identite_fichier"
+      "nom": "Nationalité",
+      "type": "identite_nationalite",
+      "etape": "fichiers"
     },
     {
       "identifiant": "7",
-      "nom": "Passeport",
-      "type": "identite_fichier"
+      "nom": "Carte d'identité",
+      "type": "identite_fichier",
+      "etape": "fichiers"
     },
     {
       "identifiant": "8",
-      "nom": "Carte de séjour",
-      "type": "identite_fichier"
+      "nom": "Passeport",
+      "type": "identite_fichier",
+      "etape": "fichiers"
     },
     {
       "identifiant": "9",
-      "nom": "Permis",
-      "type": "vehicule_fichier"
+      "nom": "Carte de séjour",
+      "type": "identite_fichier",
+      "etape": "fichiers"
     },
     {
       "identifiant": "10",
-      "nom": "Carte grise",
-      "type": "vehicule_fichier"
+      "nom": "Permis",
+      "type": "vehicule_fichier",
+      "etape": "vehicule"
     },
     {
       "identifiant": "11",
-      "nom": "Certificat d'assurance",
-      "type": "vehicule_fichier"
+      "nom": "Carte grise",
+      "type": "vehicule_fichier",
+      "etape": "vehicule"
     },
     {
       "identifiant": "12",
-      "nom": "Immatriculation",
-      "type": "vehicule_texte"
+      "nom": "Certificat d'assurance",
+      "type": "vehicule_fichier",
+      "etape": "vehicule"
     },
     {
       "identifiant": "13",
-      "nom": "Dates de la visite",
-      "type": "texte_date_periode"
+      "nom": "Immatriculation",
+      "type": "vehicule_texte",
+      "etape": "vehicule"
     },
     {
       "identifiant": "14",
+      "nom": "Dates de la visite",
+      "type": "texte_date_periode",
+      "etape": "identite"
+    },
+    {
+      "identifiant": "15",
       "nom": "Remarques",
-      "type": "texte_textarea"
+      "type": "texte_textarea",
+      "etape": "identite"
     }
   ]
 }

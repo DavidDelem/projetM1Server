@@ -6,6 +6,7 @@
       "dateCreation": 1489762174000,
       "dateLimite": 1487286000000,
       "profil": "93bc5065-4311-494c-b029-311cd9e78ad7",
+      "langue": "fr",
       "rappels": true,
       "delegation": true
     },
@@ -15,6 +16,7 @@
       "dateCreation": 1491427264526,
       "dateLimite": 1498082400000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "langue": "en",
       "rappels": false,
       "delegation": true
     },
@@ -24,6 +26,7 @@
       "dateCreation": 1484062200000,
       "dateLimite": 1484089200000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "langue": "en",
       "rappels": true,
       "delegation": true
     },
@@ -33,6 +36,7 @@
       "dateCreation": 1491428314924,
       "dateLimite": 1496268000000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "langue": "en",
       "rappels": true,
       "delegation": true
     },
@@ -42,6 +46,7 @@
       "dateCreation": 1478942000000,
       "dateLimite": 1479942000000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "langue": "en",
       "rappels": true,
       "delegation": true
     },
@@ -51,6 +56,7 @@
       "dateCreation": 1492376765486,
       "dateLimite": 1493157600000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "langue": "en",
       "rappels": true,
       "delegation": true
     },
@@ -60,6 +66,7 @@
       "dateCreation": 1492464113098,
       "dateLimite": 1493848800000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
+      "langue": "en",
       "rappels": true,
       "delegation": true
     },
@@ -67,9 +74,30 @@
       "identifiant": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
       "nom": "Date limite J+2 autre",
       "dateCreation": 1492464168137,
-      "dateLimite": 1495231200000,
+      "dateLimite": 1495058400000,
       "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "rappels": false,
+      "langue": "en",
+      "rappels": true,
+      "delegation": true
+    },
+    {
+      "identifiant": "448d4d89-012e-4a52-b535-9328e1aca6b8",
+      "nom": "ttoo",
+      "dateCreation": 1495202808452,
+      "dateLimite": 1495836000000,
+      "profil": "1",
+      "langue": "fr",
+      "rappels": true,
+      "delegation": true
+    },
+    {
+      "identifiant": "c61e0ed9-373d-40b2-a340-265512a36715",
+      "nom": "langue",
+      "dateCreation": 1495298935940,
+      "dateLimite": 1495663200000,
+      "profil": "2",
+      "langue": "en",
+      "rappels": true,
       "delegation": true
     }
   ]

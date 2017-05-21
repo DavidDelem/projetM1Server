@@ -10,48 +10,38 @@ module.exports = function(app) {
     var projetsDAO = require('../dao/projets.js');
     var mail = require('../mail/mail.js');
     
-    var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");
-    
     var moment = require('moment');
     var _ = require('lodash');
     
     var multer  = require('multer');
-    //var upload = multer({ dest: 'upload/' });
     var storage = multer.memoryStorage();
     var upload = multer({ storage: storage });
     
-    app.use(auth.initialize());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     
     /* Savoir si les biodatas sont envoyées ou non */
-    app.get("/biodatas", auth.authenticate(), function(req, res) {  
-        if (req.user.type === 'visiteur') {
-            invitationsDAO.getHistorique(req.user.identifiant, function(historique) {
-                if(historique[historique.length-1].type != "RECEPTION_INVITATION") {
-                    console.log(true);
-                    res.json(true);
-                } else {
-                    res.json(false);
-                }
-            });
-        } else {
-            res.sendStatus(401);
-        } 
+    app.get("/visiteurs/biodatas", function(req, res) {  
+        invitationsDAO.getHistorique(req.user.identifiant, function(historique) {
+            if(historique[historique.length-1].type != "RECEPTION_INVITATION") {
+                res.json(true);
+            } else {
+                res.json(false);
+            }
+        });
     });
     
     /* Envoi des biodatas */
     
-    app.post("/biodatas", auth.authenticate(), upload.array('fichiers', 10), function(req, res) {  
-        if (req.user.type === 'visiteur') {
-            
+    app.post("/visiteurs/biodatas", upload.array('fichiers', 10), function(req, res) {  
+        
             var erreurs = [];
             var biodatas = [];
             var fichiers = [];
             
             var champs = JSON.parse(req.body.champs);
-            //console.log(champs);
+        
+            // Traitement de chaque champ
             async.eachSeries(champs, function iteratee(champ, callback) { 
                 if(champ.obligatoire == true && _.isEmpty(champ.saisie) && champ.type.indexOf('fichier') == -1) {
                     erreurs.push(champ);
@@ -92,7 +82,7 @@ module.exports = function(app) {
                 if(_.isEmpty(erreurs)) {
                     projetsDAO.getByIdentifiant(req.user.projet, function(projet) {
                         mail.sendBiodatas(req.user.email, projet.nom, biodatas, fichiers, function(response) {
-                            mail.sendConfirmationBiodatas(req.user.email, projet.nom, biodatas, fichiers, function(response) {
+                            mail.sendConfirmationBiodatas(req.user.email, projet.nom, projet.langue, biodatas, fichiers, function(response) {
                                 invitationsDAO.addToHistorique(req.user.identifiant, 'ENVOI_BIODATAS', function(historique) {
                                     res.json(true);
                                 });
@@ -100,18 +90,10 @@ module.exports = function(app) {
                         });
                     });
                 } else {
-                    console.log(erreurs);
-//                    var erreursTest = [{identifiant:"4",
-//                                        nom:"Numéro de téléphone",
-//                                        type:"texte_telephone",
-//                                        coche:true,
-//                                        obligatoire:true,
-//                                        saisie:{telephone:"iiiiiiiiiiiiiiiiiiiiiiiiiiii"}
-//                                       }];
                     res.json(erreurs);
                 }
             });
-        }
+        
     });
     
     function traitementFichier(champ, fichier, callback) {

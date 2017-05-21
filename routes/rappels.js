@@ -5,21 +5,9 @@ module.exports = function(app) {
     var async = require('async');
     
     var rappelsDAO = require('../dao/rappels.js');
-    
-    var auth = require("../authentification/auth.js")();  
-    var cfg = require("../authentification/config.js");  
-     
-    app.use(auth.initialize());
+
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-    
-    app.use('/administration', auth.authenticate(), function (req, res, next) {
-        if(req.user.type === 'administrateur') {
-            next(); 
-        } else {
-            res.sendStatus(401);
-        }
-    });
     
     /* Récupération de la liste des rappels                 */
     /* Type: GET                                            */
