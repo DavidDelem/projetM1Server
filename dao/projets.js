@@ -1,5 +1,6 @@
+const config = require('../config.json');
 const low = require('lowdb');
-const db = low('data/projets.json', {storage: require('lowdb/lib/storages/file-async') });
+const db = low(config.baseDossierData + 'projets.json', {storage: require('lowdb/lib/storages/file-async') });
 var uuid = require('node-uuid');
 var moment = require('moment');
 

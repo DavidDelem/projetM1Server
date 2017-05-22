@@ -10,19 +10,16 @@
     "fs": "0.0.1-security",
     "https": "^1.0.0",
     "jwt-simple": "^0.5.1",
-    "knex": "^0.10.0",
     "lodash-id": "^0.13.0",
     "lowdb": "^0.15.4",
     "moment": "^2.17.1",
     "multer": "^1.2.1",
-    "mysql": "^2.12.0",
     "node-uuid": "^1.4.7",
     "nodemailer": "^4.0.1",
     "nodemailer-smtp-transport": "^2.7.4",
     "nunjucks": "^3.0.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
-    "shortid": "^2.2.8",
-    "tesseract.js": "^1.0.10"
+    "shortid": "^2.2.8"
   }
 }

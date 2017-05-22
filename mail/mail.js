@@ -1,17 +1,19 @@
+const config = require('../config.json');
+
 const nunjucks = require( 'nunjucks' );
 nunjucks.configure('mail/templates', { autoescape: true });
 
 const nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
+const smtpTransport = require('nodemailer-smtp-transport');
 
 const transporter = nodemailer.createTransport(smtpTransport({
-        host: 'ssl0.ovh.net',
-        port: 465,
+        host: config.emailSmtpServer,
+        port: config.emailSmtpPort,
         secureConnection: true, //true or false
         tls: { rejectUnauthorized: false },
         auth: {
-            user: 'biodata@celadon.asso.fr',
-            pass: '###'
+            user: config.emailAdresse,
+            pass: config.emailPassword
         },
         debug: true
     }));

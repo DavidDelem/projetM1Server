@@ -1,5 +1,6 @@
+const config = require('../config.json');
 const low = require('lowdb');
-const db = low('data/administrateurs.json', {storage: require('lowdb/lib/storages/file-async') });
+const db = low(config.baseDossierData + 'administrateurs.json', {storage: require('lowdb/lib/storages/file-async') });
 
 var getAll = function(callback) {
     callback(db.get('administrateurs').value());

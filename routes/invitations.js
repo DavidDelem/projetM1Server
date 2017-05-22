@@ -66,6 +66,7 @@ module.exports = function(app) {
             projetsDAO.getByIdentifiant(req.params.projet, function(detail) {
                 profilsDAO.getOne(detail.profil, function(profil) {
                     if(profil && profil.nom) {
+                        console.log(detail);
                         detail.nomProfil = profil.nom;
                     }
                     res.json(detail);

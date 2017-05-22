@@ -1,5 +1,6 @@
+const config = require('../config.json');
 const low = require('lowdb');
-const db = low('data/profils.json', {storage: require('lowdb/lib/storages/file-async') });
+const db = low(config.baseDossierData + 'profils.json', {storage: require('lowdb/lib/storages/file-async') });
 var _ = require('lodash');
 var uuid = require('node-uuid');
 

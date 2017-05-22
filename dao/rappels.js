@@ -1,5 +1,6 @@
+const config = require('../config.json');
 const low = require('lowdb');
-const db = low('data/rappels.json', {storage: require('lowdb/lib/storages/file-async') });
+const db = low(config.baseDossierData + 'rappels.json', {storage: require('lowdb/lib/storages/file-async') });
 
 var getAll = function(callback) {
     callback(db.get('rappels').sortBy('nbJours').value());
