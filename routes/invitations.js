@@ -278,24 +278,24 @@ module.exports = function(app) {
 
     });
 
-//    app.delete("/invitation", auth.authenticate(), function(req, res) {  
-//        console.log("ttttt");
-//       if (req.user.type === 'visiteur') {
-//            console.log("ttttt");
-//            if(req.user.identifiant) {
-//                console.log("hhh");
-//                invitationsDAO.remove(req.user.identifiant, function(champs) {
-//                    console.log("hhh");
-//                   
-//                    res.sendStatus(200);
-//                });  
-//            } else {
-//                res.sendStatus(400);
-//            }
-//        } else {
-//            res.sendStatus(401);
-//        }
-//        
-//    });
+    app.delete("/visiteurs/invitation", function(req, res) {  
+        console.log("ttttt");
+       if (req.user.type === 'visiteur') {
+           console.log("ttttt");
+            if(req.user.identifiant) {
+                console.log("hhh");
+                invitationsDAO.remove(req.user.identifiant, function(champs) {
+                    console.log("hhh");
+                   
+                    res.sendStatus(200);
+                });  
+            } else {
+                res.sendStatus(400);
+            }
+        } else {
+            res.sendStatus(401);
+        }
+        
+    });
 
 }
