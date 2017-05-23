@@ -20,6 +20,12 @@ var add = function (identifiant, password, callback) {
     });
 }
 
+var update = function (identifiant, password, callback) {
+    db.get('administrateurs').find({ identifiant: identifiant }).assign({ password: password}).write().then(function(administrateurs){
+        callback(administrateurs);
+    });
+}
+
 var remove = function (identifiant, callback) {
     db.get('administrateurs').remove({ identifiant: identifiant }).write().then(function(administrateurs){
         callback(administrateurs);
@@ -35,6 +41,8 @@ module.exports = {
     getByIdentifiant: getByIdentifiant,
     /* Ajout d'un compte administrateur à partir d'un identifiant et d'un mot de passe */
     add: add,
+    /* Modification d'un compte administrateur à partir d'un identifiant */
+    update: update,
     /* Suppression d'un compte administrateur à partir d'un identifiant */
     remove: remove
 }
