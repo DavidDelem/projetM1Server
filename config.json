@@ -1,7 +1,7 @@
 {
     "emailAdresse" : "biodata@celadon.asso.fr",
-    "emailPassword" : "###",
+    "emailPassword" : "cRP-CXe-54L-3BQ",
     "emailSmtpServer" : "ssl0.ovh.net",
     "emailSmtpPort" : 587,
-    "baseDossierData": "/home/data/"
+    "baseDossierData": "data/"
 }

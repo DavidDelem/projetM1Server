@@ -1,0 +1,3 @@
+{% for biodata in biodatas %}
+    {{biodata.nom}} ; {{biodata.saisie}}
+{% endfor %}

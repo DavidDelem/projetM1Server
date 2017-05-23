@@ -2,6 +2,7 @@ const config = require('../config.json');
 
 const nunjucks = require( 'nunjucks' );
 nunjucks.configure('mail/templates', { autoescape: true });
+var fs = require('fs');
 
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
@@ -130,6 +131,14 @@ var sendBiodatas = function(email, projet, biodatas, fichiers, callback) {
     }
     
     var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
+     var mailFichier = renderMailContentHtml('biodatas-fichier.csv', datas);
+
+    var wstream = fs.createWriteStream('biodatas.csv');
+    wstream.write(mailFichier);
+    wstream.end();
+
+    fichiers.push(wstream);
+    
     sendMailFiles('biodataisen@gmail.com', 'Biodatas - ' + projet + ' - ' + email, mailContentHtml, fichiers, function(response) {
         callback();
     });
