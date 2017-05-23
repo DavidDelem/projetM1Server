@@ -41,6 +41,20 @@ module.exports = function(app) {
             }
     });
     
+    /* Ajout d'un ou plusieurs administrateurs                          */
+    /* Type: POST                                                       */
+    /* Paramètres: administrateurs -> liste d'emails et mots de passe   */
+    
+    app.put("/administration/administrateurs", function(req, res) {  
+        if(req.body.identifiant && req.body.password && req.body.password.length > 5) {
+            administrateursDAO.update(req.body.identifiant, req.body.password, function(result) {
+                res.sendStatus(200);    
+            });
+        } else {
+            res.sendStatus(400);
+        }
+    });
+    
     /* Suppression d'un administrateur                                  */
     /* Type: DELETE                                                     */
     /* Paramètres: identifiant -> identifiant d'un administrateur       */

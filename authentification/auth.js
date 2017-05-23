@@ -31,7 +31,7 @@ module.exports = function() {
             } else {
                 administrateurs.getByIdentifiant(payload.id, function(result) {
                     if (result.length !== 0) {
-                        return done(null, { type: 'administrateur' });
+                        return done(null, { type: 'administrateur', identifiant: result[0].identifiant });
                     } else {
                         return done(null, false, { message: 'Invalid token' });
                     }
