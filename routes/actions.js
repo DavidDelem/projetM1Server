@@ -111,7 +111,7 @@ module.exports = function(app) {
         
     });
     
-    /* Action envoi d'un message par mail                       */
+    /* Action envoi d'un message par mail à un visiteur         */
     /* Type: PUT                                                */
     /* Paramètres: invitation -> identifiant de l'invitation    */
     /* Paramètres: message -> message contenu dans l'email      */
@@ -126,6 +126,22 @@ module.exports = function(app) {
                     });
                 });
             });   
+         } else {
+            res.sendStatus(400);
+         }
+        
+    });
+    
+    /* Action envoi d'un message aux administrateurs            */
+    /* Type: PUT                                                */
+    /* Paramètres: invitation -> identifiant de l'invitation    */
+    /* Paramètres: message -> message contenu dans l'email      */
+    
+    app.put("/visiteurs/message", function(req, res) {  
+
+         if(req.body.message && req.body.message != '') {
+            console.log(req.body.message);
+            res.sendStatus(200);
          } else {
             res.sendStatus(400);
          }

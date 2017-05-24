@@ -1292,6 +1292,36 @@
           "type": "RECEPTION_INVITATION"
         }
       ]
+    },
+    {
+      "identifiant": "HySr47G-b",
+      "password": "HyxSrE7fZb",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "c61e0ed9-373d-40b2-a340-265512a36715",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1495573565491,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
+    },
+    {
+      "identifiant": "SkquE7M-Z",
+      "password": "Bkl5ON7zW-",
+      "email": "david.delemotte@gmail.com",
+      "nom": "",
+      "prenom": "",
+      "identifiantProjet": "c61e0ed9-373d-40b2-a340-265512a36715",
+      "identifiantParent": "",
+      "historique": [
+        {
+          "date": 1495573618029,
+          "type": "RECEPTION_INVITATION"
+        }
+      ]
     }
   ]
 }

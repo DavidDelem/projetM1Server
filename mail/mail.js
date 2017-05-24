@@ -131,7 +131,7 @@ var sendBiodatas = function(email, projet, biodatas, fichiers, callback) {
     }
     
     var mailContentHtml = renderMailContentHtml('biodatas-administrateur.html', datas);
-     var mailFichier = renderMailContentHtml('biodatas-fichier.csv', datas);
+    var mailFichier = renderMailContentHtml('biodatas-fichier.csv', datas);
 
     var wstream = fs.createWriteStream('biodatas.csv');
     wstream.write(mailFichier);
