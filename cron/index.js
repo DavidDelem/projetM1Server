@@ -72,8 +72,11 @@ new CronJob('00 00 14 * * *', function() { // */3 * * * * *
                           for(var invitation of invitations) {
                               var lastHistorique = invitation.historique[invitation.historique.length-1];
                               if(lastHistorique.type == 'RECEPTION_INVITATION') {
-                                mail.sendRappel(invitation.email, projet.dateLimite, function(response) {
-                                    res.sendStatus(200);
+                                mail.sendRappel(invitation.email,
+                                                projet.langue,
+                                                moment(projet.dateLimite, 'x').format('DD/MM/YYYY'),
+                                                function(response) {
+                                    console.log('rappel envoye');
                                 });
                               }
                           }

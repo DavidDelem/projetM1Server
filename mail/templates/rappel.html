@@ -1,10 +1,49 @@
-<div style="background-color: #5bb47d; width: 100%; padding: 10px; color: #fff;">
-    <h1>Sea Test Base Biodatas</h1>
+<div style="background-color: #5bb47d; width: 100%; padding-top: 8px; padding-bottom: 8px; color: #fff; text-align: center;">
+    <h1 style="font-weight: normal;">Sea Test Base Biodata</h1>
 </div>
-<div style="background-color: rgb(238, 238, 238); color: #222">
-    <h2>Bonjour,</h2>
-    <p>Vous avez récemment reçu une invitation à saisir vos biodatas afin d'accèder à SeaTestBase.</p>
-    <p>Ce message est un rappel envoyé automatiquement, il vous reste jusqu'au {{ dateLimite }} pour envoyer vos biodatas</p>
-    <p>Utilisez les identifiants reçus dans le premier mail d'invitation.</p>
-    <p>Connexion</p>
+<div style="background-color: rgb(238, 238, 238); color: #222; padding: 15px;">
+    <div style="height: 25px; width: 100%;"></div>
+    <div style="width: 70%; color: #222222; margin-left: 15%;">
+        {% if langue == 'en' %}
+            <h2>Hello,</h2>
+            <p>You have recently received an invitation to enter your biodata to access Sea Test Base.</p>
+            <p>This message is a reminder sent automatically, you have until {{ dateLimite }} to send your biodatas</p>
+            <p>Please use the identifiers received in the first invitation mail to connect.</p>
+        {% else %}
+            <h2>Bonjour,</h2>
+            <p>Vous avez récemment reçu une invitation à saisir vos biodata afin d'accèder à Sea Test Base.</p>
+            <p>Ce message est un rappel envoyé automatiquement, il vous reste jusqu'au {{ dateLimite }} pour envoyer vos biodata</p>
+            <p>Utilisez les identifiants reçus dans le premier mail d'invitation.</p>
+        {% endif %}
+    </div>
+    <div style="height: 10px; width: 100%;"></div>
+    <a href="https://biodata.seatestbase.com/#/public/page-connexion-visiteur/" target="_blank" style="display: inline-block; background-color: #fff; padding-top: 20px; padding-bottom: 20px; width: 70%; margin-left: 15%; color: #000; text-decoration: none; text-align: center;">
+        <span style="font-size: 1.4em;">
+            {% if langue == 'en' %}
+                CONNECT
+            {% else %}
+                CONNEXION
+            {% endif %}
+        </span>
+    </a>
+    <div style="text-align: center;">
+        <p style="font-size: 0.8em;">
+            {% if langue == 'en' %}
+                Or use the following link: https://biodata.seatestbase.com
+            {% else %}
+                Ou utilisez le lien suivant: https://biodata.seatestbase.com
+            {% endif %}
+        </p>
+    </div>
+    <div style="height: 25px; width: 100%;"></div>
+    <div style="text-align: center; color: #7d7d7d;">
+        {% if langue == 'en' %}
+            <p>The deadline for sending your biodata is {{ dateLimite }}</p>
+            <p>At any time, you can also check the progress of your request with these credentials</p>
+        {% else %}
+            <p>La date limite d'envoi de vos biodata est fixée au {{ dateLimite }}</p>
+            <p>A tout moment, vous pourrez également consulter l'avancée de votre dossier grâce à ces identifiants</p>
+        {% endif %}
+    </div>
+    <div style="height: 25px; width: 100%;"></div>
 </div>

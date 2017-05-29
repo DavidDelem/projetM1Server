@@ -34,10 +34,11 @@ var sendInvitation = function(email, identifiant, password, langue, dateLimite, 
     });
 }
 
-var sendRappel = function(email, dateLimite, callback) {
+var sendRappel = function(email, langue, dateLimite, callback) {
     
     var datas = {
-        dateLimite: dateLimite
+        dateLimite: dateLimite,
+        langue: langue
     }
 
     var mailContentHtml = renderMailContentHtml('rappel.html', datas);

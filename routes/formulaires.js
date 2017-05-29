@@ -63,7 +63,7 @@ module.exports = function(app) {
                             erreurs.push(champ);
                         }
                         
-                    } else if (champ.type.indexOf('texte') !== -1 || champs.type == 'identite_nationalite') {
+                    } else if (champ.type.indexOf('texte') !== -1 || champ.type == 'identite_nationalite') {
                         traitementTexte(champ, function(saisie) {
                             if(saisie !== false) {
                                 biodatas.push({nom: champ.nom, saisie: saisie})
@@ -80,6 +80,7 @@ module.exports = function(app) {
                 callback();
             }, function done() {
                 if(_.isEmpty(erreurs)) {
+                    console.log(biodatas);
                     projetsDAO.getByIdentifiant(req.user.projet, function(projet) {
                         mail.sendBiodatas(req.user.email, projet.nom, biodatas, fichiers, function(response) {
                             mail.sendConfirmationBiodatas(req.user.email, projet.nom, projet.langue, biodatas, fichiers, function(response) {
@@ -138,7 +139,12 @@ module.exports = function(app) {
                 callback(false);
             }
         } else if(champ.type == 'identite_nationalite') {
-            callback(true); // A REVOIR
+            console.log(champ.saisie.nationalite);
+            if(champ.saisie.nationalite && champ.saisie.nationalite != "") {
+                callback(champ.saisie.nationalite);
+            } else {
+                callback(false);
+            }
         } else if(champ.type == 'vehicule_texte') {
             if(/^[A-Z]{1,2}-[0-9]{1,3}-[A-Z]{1,2}$/.test(champ.saisie.immatriculation) || /^[0-9]{1,4}-[A-Z]{1,4}-[0-9]{1,2}$/.test(champ.saisie.immatriculation)) {
                 callback(champ.saisie.immatriculation);

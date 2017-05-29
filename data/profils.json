@@ -47,19 +47,27 @@
           "obligatoire": true
         },
         {
-          "identifiant": "3",
-          "obligatoire": false
-        },
-        {
-          "identifiant": "4",
+          "identifiant": "2",
           "obligatoire": true
         },
         {
-          "identifiant": "5",
+          "identifiant": "4",
           "obligatoire": false
         },
         {
+          "identifiant": "6",
+          "obligatoire": true
+        },
+        {
           "identifiant": "7",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "8",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "9",
           "obligatoire": false
         },
         {
@@ -68,6 +76,10 @@
         },
         {
           "identifiant": "13",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "15",
           "obligatoire": false
         }
       ]
@@ -219,6 +231,16 @@
           "obligatoire": false
         }
       ]
+    },
+    {
+      "identifiant": "e8ecc6c9-66d3-4dc3-b709-ea170649c441",
+      "nom": "Visite courte durée",
+      "champs": {}
+    },
+    {
+      "identifiant": "fd1bb13e-d60f-4983-90d2-494fbae89437",
+      "nom": "profil D",
+      "champs": {}
     }
   ]
 }
