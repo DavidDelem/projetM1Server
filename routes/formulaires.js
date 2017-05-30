@@ -127,8 +127,11 @@ module.exports = function(app) {
                 callback(false);
             }
         } else if(champ.type == 'texte_adresse') {
-            if(champ.saisie.numero && champ.saisie.rue && champ.saisie.codePostal && champ.saisie.ville && champ.saisie.pays && champ.saisie.numero != '' && champ.saisie.rue != '' && champ.saisie.codePostal != '' && champ.saisie.ville != '' && champ.saisie.pays != '') {
-                callback(champ.saisie.numero + ' ' + champ.saisie.rue + ' ' + champ.saisie.codePostal + ' ' + champ.saisie.autreReponse + ' ' + champ.saisie.ville + ' ' + champ.saisie.pays);
+            if(champ.saisie.numero && champ.saisie.rue && champ.saisie.codePostal && champ.saisie.ville && champ.saisie.pays
+               && champ.saisie.numero != '' && champ.saisie.rue != ''
+               && champ.saisie.codePostal != '' && champ.saisie.ville != '' && champ.saisie.pays != '') {
+                
+                callback(champ.saisie.numero + ' ' + champ.saisie.rue + ' ' + champ.saisie.codePostal + ' ' + champ.saisie.autreReponse || '' + ' ' + champ.saisie.ville + ' ' + champ.saisie.pays);
             } else {
                 callback(false);
             }

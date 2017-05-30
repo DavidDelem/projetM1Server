@@ -7,6 +7,7 @@ module.exports = function(app) {
     var invitationsDAO = require('../dao/invitations.js');
     var projetsDAO = require('../dao/projets.js');
     var profilsDAO = require('../dao/profilsformulaires.js');
+    var historiqueDAO = require('../dao/historique.js');
     var mail = require('../mail/mail.js');
     
     var moment = require('moment');
@@ -146,7 +147,9 @@ module.exports = function(app) {
         if(req.params.projet) {
             projetsDAO.remove(req.params.projet, function(detail) {
                 invitationsDAO.removeByProjet(req.params.projet, function(invitations) {
-                    res.json(invitations);
+                    historiqueDAO.remove(req.params.projet, function(historique) {
+                        res.sendStatus(200);
+                    });
                 });
             }); 
         } else {

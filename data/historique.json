@@ -119,6 +119,16 @@
         "nom": "toto2",
         "identifiant": "448d4d89-012e-4a52-b535-9328e1aca6b8"
       }
+    },
+    {
+      "identifiant": "a111de97-ad72-455f-8715-d7351bd401d1",
+      "date": 1496047559648,
+      "type": "DELEGATION_INVITATION",
+      "lu": false,
+      "details": {
+        "nom": "toto",
+        "identifiant": "b626b75e-9dee-4479-b7b0-0dfcac8f05b3"
+      }
     }
   ]
 }

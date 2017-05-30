@@ -41,7 +41,7 @@ module.exports = function(app) {
                             if(email.value && email.value != '') {
                                 invitationsDAO.add(req.user.projet, email.value, req.user.identifiant, function(identifiantInvitation) {
                                     invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
-                                        mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, moment(projet.dateLimite, 'x').format('DD/MM/YYYY'), function(response) {
+                                        mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, projet.langue, moment(projet.dateLimite, 'x').format('DD/MM/YYYY'), function(response) {
                                             callback();
                                         });
                                     });
@@ -51,7 +51,7 @@ module.exports = function(app) {
                             }
                         }, function done() {
                             var details = { nom: projet.nom, identifiant: projet.identifiant }
-                            historiqueDAO.add('DELEGATION_INVITATION', details, function(response) {
+                            historiqueDAO.add('DELEGATION_INVITATION', projet.identifiant, details, function(response) {
                                 res.sendStatus(200);
                             });
                         });

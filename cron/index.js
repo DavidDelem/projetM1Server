@@ -20,7 +20,7 @@ new CronJob('00 00 06 * * *', function() { // */3 * * * * *
                 identifiant: projet.identifiant
             }
             
-            historique.add('DATE_LIMITE_ATTEINTE', details, function(response) {           
+            historique.add('DATE_LIMITE_ATTEINTE', projet.identifiant, details, function(response) {           
             });
         }      
     }); 
@@ -51,7 +51,7 @@ new CronJob('00 00 08 * * *', function() { // */3 * * * * *
                         identifiant: projet.identifiant
                     }
                                 
-                     historique.add('TOUTES_BIODATAS_ENVOYEES', details, function(response) {
+                     historique.add('TOUTES_BIODATAS_ENVOYEES', projet.identifiant, details, function(response) {
                      });
                 }
             });

@@ -1,90 +1,10 @@
 {
   "projets": [
     {
-      "identifiant": "e076c0d7-6029-4bd7-8944-73dc3a0ee0b7",
-      "nom": "Test projet clos",
-      "dateCreation": 1484062200000,
-      "dateLimite": 1484089200000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "d15a4363-233b-429e-8ac0-78552bf27a3a",
-      "nom": "Projet exemple",
-      "dateCreation": 1491428314924,
-      "dateLimite": 1496268000000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "b5a2ce5d-1733-4901-b2c0-f668626f15da",
-      "nom": "Ancien projet",
-      "dateCreation": 1478942000000,
-      "dateLimite": 1479942000000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "61aaa0c4-5aab-44fe-af05-c83b2dbebb6b",
-      "nom": "Projet test",
-      "dateCreation": 1492376765486,
-      "dateLimite": 1493157600000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "6b76b0f6-4304-42d7-b9a6-9e764c0258e8",
-      "nom": "Projet date limite atteinte",
-      "dateCreation": 1492464113098,
-      "dateLimite": 1493848800000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "fd14c308-7993-4228-bf30-0dd5ebf8b37f",
-      "nom": "Projet C",
-      "dateCreation": 1492464168137,
-      "dateLimite": 1496181600000,
-      "profil": "e86e3ad8-7ddb-4d1c-a0bd-0b20efcf328d",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "448d4d89-012e-4a52-b535-9328e1aca6b8",
-      "nom": "Projet B",
-      "dateCreation": 1495202808452,
-      "dateLimite": 1496181600000,
-      "profil": "1",
-      "langue": "fr",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "c61e0ed9-373d-40b2-a340-265512a36715",
-      "nom": "Projet A",
-      "dateCreation": 1495298935940,
-      "dateLimite": 1496095200000,
-      "profil": "2",
-      "langue": "en",
-      "rappels": true,
-      "delegation": true
-    },
-    {
-      "identifiant": "b626b75e-9dee-4479-b7b0-0dfcac8f05b3",
+      "identifiant": "bb7e4c99-7fa9-4542-b4c9-9806d9e179a4",
       "nom": "toto",
-      "dateCreation": 1496046013373,
-      "dateLimite": 1496181600000,
+      "dateCreation": 1496051527970,
+      "dateLimite": 1496095200000,
       "profil": "2",
       "langue": "fr",
       "rappels": true,

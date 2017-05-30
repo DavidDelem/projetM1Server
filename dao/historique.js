@@ -8,12 +8,13 @@ var get = function(date, callback) {
     callback(_.reverse(db.get('historique').filter(historique => date <= historique.date).sortBy('date').cloneDeep().value()));
 }
 
-var add = function (type, details, callback) {
+var add = function (type, identifiantProjet, details, callback) {
     
     db.get('historique').push({identifiant: uuid.v4(),
                                 date: Date.now(),
                                 type: type,
                                 lu: false,
+                                identifiantProjet: identifiantProjet,
                                 details: details}).write().then(function(historique) {
         callback(historique);
     });
@@ -25,8 +26,15 @@ var update = function (identifiant, lu, callback) {
     });
 }
 
+var remove = function (identifiantProjet, callback) {
+    db.get('historique').remove({ identifiantProjet: identifiantProjet }).write().then(function(historique){
+        callback(historique);
+    });
+}
+
 module.exports = {
     get: get,
     add: add,
-    update: update
+    update: update,
+    remove: remove
 }
