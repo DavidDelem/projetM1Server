@@ -32,6 +32,10 @@ var remove = function (identifiant, callback) {
     });
 }
 
+var count = function(callback) {
+    callback(db.get('administrateurs').size().value());
+}
+
 module.exports = {
     /* Récupération de la liste de tous les administrateurs */
     getAll: getAll,
@@ -44,5 +48,7 @@ module.exports = {
     /* Modification d'un compte administrateur à partir d'un identifiant */
     update: update,
     /* Suppression d'un compte administrateur à partir d'un identifiant */
-    remove: remove
+    remove: remove,
+    /* Nombre total d'administrateurs */
+    count: count
 }

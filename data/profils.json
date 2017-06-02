@@ -47,6 +47,10 @@
           "obligatoire": true
         },
         {
+          "identifiant": "2",
+          "obligatoire": true
+        },
+        {
           "identifiant": "3",
           "obligatoire": true
         },
@@ -80,6 +84,22 @@
         },
         {
           "identifiant": "15",
+          "obligatoire": false
+        },
+        {
+          "identifiant": "16",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "17",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "18",
+          "obligatoire": true
+        },
+        {
+          "identifiant": "19",
           "obligatoire": false
         }
       ]

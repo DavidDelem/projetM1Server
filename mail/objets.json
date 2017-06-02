@@ -1,0 +1,34 @@
+{
+    "invitation" : {
+        "fr" : "Sea Test Base Biodata - Invitation",
+        "en" : "Sea Test Base Biodata - Invitation"
+    },
+    "rappel" : {
+        "fr" : "Sea Test Base Biodata - Rappel important",
+        "en" : "Sea Test Base Biodata - Important reminder"
+    },
+    "password" : {
+        "fr" : "Sea Test Base Biodata - Vos identifiants de connexion",
+        "en" : "Sea Test Base Biodata - Your login credentials"
+    },
+    "erreurbiodata" : {
+        "fr" : "Sea Test Base Biodata - Problème concernant les données reçues",
+        "en" : "Sea Test Base Biodata - Problem with received data"
+    },
+    "validitebiodata" : {
+        "fr" : "Sea Test Base Biodata - Les données reçues ont été validées",
+        "en" : "Sea Test Base Biodata - The data received has been validated"
+    },
+    "reponsefinale" : {
+        "fr" : "Sea Test Base Biodata - Réponse des autorités concernant votre venue",
+        "en" : "Sea Test Base Biodata - Response of authorities concerning your visit"
+    },
+    "message" : {
+        "fr" : "Sea Test Base Biodata - Message d'un administrateur",
+        "en" : "Sea Test Base Biodata - Message from an administrator"
+    },
+    "confirmation" : {
+        "fr" : "Sea Test Base Biodata - Récapitulatif des données envoyées",
+        "en" : "Sea Test Base Biodata - Summary of data sent"
+    }
+}

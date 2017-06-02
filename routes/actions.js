@@ -16,8 +16,14 @@ module.exports = function(app) {
     /* Paramètres: invitation -> identifiant de l'invitation    */
     
     app.put("/administration/invitations/:invitation/validationbiodatas", function(req, res) {  
-        invitationsDAO.addToHistorique(req.params.invitation, 'VALIDATION_BIODATAS', function(historique) {
-            res.sendStatus(200);
+        invitationsDAO.getByIdentifiant(req.params.invitation, function(invitation) {
+            projetsDAO.getByIdentifiant(invitation[0].identifiantProjet, function(projet) {
+                invitationsDAO.addToHistorique(invitation[0].identifiant, 'VALIDATION_BIODATAS', function(historique) {
+                    mail.sendReponseValidationBiodatas(invitation[0].email, projet.langue, function(response) {
+                        res.sendStatus(200);
+                    });
+                });
+            });
         });
     });
     

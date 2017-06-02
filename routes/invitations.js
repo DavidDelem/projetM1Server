@@ -67,7 +67,6 @@ module.exports = function(app) {
             projetsDAO.getByIdentifiant(req.params.projet, function(detail) {
                 profilsDAO.getOne(detail.profil, function(profil) {
                     if(profil && profil.nom) {
-                        console.log(detail);
                         detail.nomProfil = profil.nom;
                     }
                     res.json(detail);
@@ -83,12 +82,21 @@ module.exports = function(app) {
     /* Paramètres: projet -> identifiant du projet                           */
     /*             nom -> nouveau nom                                        */
     /*             dateLimite -> nouvelle date limite                        */
+    /*             dateDebut -> nouvelle date debut                          */
+    /*             dateFin -> nouvelle date fin                              */
     /*             profil -> nouveau profil                                  */
     /*             langue -> nouvelle langue                                 */
     
     app.put("/administration/projets/:projet", function(req, res) {  
         if(req.params.projet && req.body.nom && req.body.dateLimite && req.body.profil && req.body.langue) {
-            projetsDAO.updateInfos(req.params.projet, req.body.nom, parseInt(req.body.dateLimite), req.body.profil, req.body.langue, function(projet) {
+            projetsDAO.updateInfos(req.params.projet,
+                                   req.body.nom,
+                                   parseInt(req.body.dateLimite),
+                                   parseInt(req.body.dateDebut) || false,
+                                   parseInt(req.body.dateFin) || false,
+                                   req.body.profil,
+                                   req.body.langue,
+                                   function(projet) {
                 res.sendStatus(200);
             }); 
         } else {
@@ -196,13 +204,21 @@ module.exports = function(app) {
     /* Type: POST                                       */
     /* Paramètres: projet -> identifiant du projet      */
     /*             dateLimite -> date limite du projet  */
+    /*             dateDebut -> nouvelle date debut     */
+    /*             dateFin -> nouvelle date fin         */
     /*             profil -> profil du projet           */
     /*             langue -> profil du projet           */
     
     app.post("/administration/projets", function(req, res) {  
-        if(req.body.projet && req.body.dateLimite && req.body.profil && req.body.langue) { 
-            projetsDAO.add(req.body.projet, parseInt(req.body.dateLimite), req.body.profil, req.body.langue, function(projets) {
-                res.json(projets);
+        if(req.body.projet && req.body.dateLimite && req.body.dateDebut && req.body.dateFin && req.body.profil && req.body.langue) { 
+            projetsDAO.add(req.body.projet,
+                           parseInt(req.body.dateLimite),
+                           parseInt(req.body.dateDebut) || false,
+                           parseInt(req.body.dateFin) || false,
+                           req.body.profil,
+                           req.body.langue,
+                           function(projets) {
+                res.sendStatus(200);
             }); 
         } else {
             res.sendStatus(400);
@@ -227,7 +243,17 @@ module.exports = function(app) {
                                                     projet.langue,
                                                     moment(projet.dateLimite, 'x').format('DD/MM/YYYY'),
                                                     function(response) {
-                                    callback();
+                                    
+                                    // Si l'adresse mail n'existe pas ou que le mail ne s'est pas envoyé, l'invitation est retirée
+
+                                    if(response == false) {
+                                       invitationsDAO.remove(invitation[0].identifiant, function(response) {
+                                            callback();
+                                       });
+                                    } else {
+                                        callback();
+                                    }
+                                    
                                 });
                             });
                         });  

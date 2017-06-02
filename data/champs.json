@@ -21,13 +21,13 @@
     {
       "identifiant": "4",
       "nom": "Numéro de téléphone personnel",
-      "type": "texte_telephone",
+      "type": "texte_telephone_personnel",
       "etape": "identite"
     },
     {
       "identifiant": "5",
       "nom": "Numéro de téléphone profesionnel",
-      "type": "texte_telephone",
+      "type": "texte_telephone_profesionnel",
       "etape": "identite"
     },
     {
@@ -79,15 +79,39 @@
       "etape": "vehicule"
     },
     {
-      "identifiant": "14",
-      "nom": "Dates de la visite",
-      "type": "texte_date_periode",
-      "etape": "identite"
-    },
-    {
       "identifiant": "15",
       "nom": "Remarques",
       "type": "texte_textarea",
+      "etape": "identite"
+    },
+    {
+      "identifiant": "16",
+      "nom": "Date de délivrance",
+      "type": "identite_texte_date_delivrance",
+      "etape": "fichiers"
+    },
+    {
+      "identifiant": "17",
+      "nom": "Date d'expiration",
+      "type": "identite_texte_date_expiration",
+      "etape": "fichiers"
+    },
+    {
+      "identifiant": "18",
+      "nom": "Délivré par",
+      "type": "identite_texte_delivrance",
+      "etape": "fichiers"
+    },
+    {
+      "identifiant": "19",
+      "nom": "Lieu de naissance",
+      "type": "texte_lieu",
+      "etape": "identite"
+    },
+    {
+      "identifiant": "20",
+      "nom": "Département de naissance",
+      "type": "texte_chiffre",
       "etape": "identite"
     }
   ]

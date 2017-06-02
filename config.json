@@ -3,5 +3,6 @@
     "emailPassword" : "###",
     "emailSmtpServer" : "ssl0.ovh.net",
     "emailSmtpPort" : 587,
-    "baseDossierData": "data/"
+    "baseDossierData": "data/",
+    "cheminCsv": "biodata.csv"
 }

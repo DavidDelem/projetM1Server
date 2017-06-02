@@ -61,9 +61,15 @@ module.exports = function(app) {
     
     app.delete("/administration/administrateurs", function(req, res) {  
         if(req.body.identifiant) {
-            administrateursDAO.remove(req.body.identifiant, function(result) {
-                res.sendStatus(200);
-            });    
+            administrateursDAO.count(function(nbAdministrateurs) {
+                if(nbAdministrateurs > 1) {
+                    administrateursDAO.remove(req.body.identifiant, function(result) {
+                        res.sendStatus(200);
+                    });    
+                } else {
+                    res.sendStatus(400);
+                }
+            });   
         } else {
             res.sendStatus(400);
         }

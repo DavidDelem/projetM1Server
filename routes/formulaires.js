@@ -120,7 +120,13 @@ module.exports = function(app) {
             } else {
                 callback(false);
             }
-        } else if (champ.type == 'texte_telephone') {
+        } else if(champ.type == 'texte_chiffre') {
+            if(champ.saisie.texte && !isNaN(champ.saisie.texte) && champ.saisie.texte.length > 1 && champ.saisie.texte.length < 4) {
+                callback(champ.saisie.texte);
+            } else {
+                callback(false);
+            }
+        } else if (champ.type == 'texte_telephone_personnel' || champ.type == 'texte_telephone_profesionnel') {
             if(/([0-9\s\-]{7,})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/.test(champ.saisie.telephone)) {
                 callback(champ.saisie.telephone);
             } else {
@@ -135,7 +141,7 @@ module.exports = function(app) {
             } else {
                 callback(false);
             }
-        } else if(champ.type == 'texte_date') {
+        } else if(champ.type == 'texte_date' || champ.type == 'identite_texte_date_delivrance' || champ.type == 'identite_texte_date_expiration') {
             if(champ.saisie.date && moment(champ.saisie.date).isValid()) {
                 callback(champ.saisie.date);
             } else {
@@ -156,6 +162,12 @@ module.exports = function(app) {
             }
         } else if(champ.type == 'texte_textarea') {
             callback(champ.saisie.remarques);
+        } else if(champ.type == 'identite_texte_delivrance' || champ.type == 'texte_lieu') {
+            if(champ.saisie.texte && champ.saisietexte != '') {
+                callback(champ.saisie.texte);
+            } else {
+                callback(false);
+            }
         } else {
             callback(false); 
         }

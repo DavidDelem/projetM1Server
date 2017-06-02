@@ -41,8 +41,22 @@ module.exports = function(app) {
                             if(email.value && email.value != '') {
                                 invitationsDAO.add(req.user.projet, email.value, req.user.identifiant, function(identifiantInvitation) {
                                     invitationsDAO.getByIdentifiant(identifiantInvitation, function(invitation) {
-                                        mail.sendInvitation(invitation[0].email, invitation[0].identifiant, invitation[0].password, projet.langue, moment(projet.dateLimite, 'x').format('DD/MM/YYYY'), function(response) {
-                                            callback();
+                                        mail.sendInvitation(invitation[0].email,
+                                                            invitation[0].identifiant,
+                                                            invitation[0].password,
+                                                            projet.langue,
+                                                            moment(projet.dateLimite, 'x').format('DD/MM/YYYY'),
+                                                            function(response) {
+                                            
+                                            // Si l'adresse mail n'existe pas ou que le mail ne s'est pas envoyé, l'invitation est retirée
+
+                                            if(response == false) {
+                                               invitationsDAO.remove(invitation[0].identifiant, function(response) {
+                                                    callback();
+                                               });
+                                            } else {
+                                                callback();
+                                            }
                                         });
                                     });
                                 });   
