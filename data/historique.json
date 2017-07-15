@@ -126,6 +126,7 @@
       "type": "DELEGATION_INVITATION",
       "lu": false,
       "details": {
+        "email": "david.delemotte@gmail.com",
         "nom": "toto",
         "identifiant": "b626b75e-9dee-4479-b7b0-0dfcac8f05b3"
       }

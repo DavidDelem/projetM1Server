@@ -23,7 +23,10 @@ module.exports = function() {
             if(payload.type == 'visiteur') {
                 invitations.getByIdentifiant(payload.id, function(result) {
                     if (result.length !== 0) {
-                        return done(null, { type: 'visiteur', identifiant: result[0].identifiant, email: result[0].email, projet: result[0].identifiantProjet });
+                        return done(null, { type: 'visiteur',
+                                            identifiant: result[0].identifiant,
+                                            email: result[0].email,
+                                            projet: result[0].identifiantProjet });
                     } else {
                         return done(null, false, { message: 'Invalid token' });
                     }
@@ -31,7 +34,8 @@ module.exports = function() {
             } else {
                 administrateurs.getByIdentifiant(payload.id, function(result) {
                     if (result.length !== 0) {
-                        return done(null, { type: 'administrateur', identifiant: result[0].identifiant });
+                        return done(null, { type: 'administrateur',
+                                            identifiant: result[0].identifiant });
                     } else {
                         return done(null, false, { message: 'Invalid token' });
                     }

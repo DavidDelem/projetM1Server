@@ -4,6 +4,7 @@ var express = require('express');
 var cors = require('cors');
 const https = require('https');
 const fs = require('fs');
+const config = require('./config.json');
 
 const options = {
 //    cert: fs.readFileSync('./ssl/server.crt'),
@@ -56,5 +57,5 @@ require('./routes/administrateurs.js')(app);
 // CRON
 require('./cron');
 
-app.listen(8088);
+app.listen(config.httpPort);
 https.createServer(options, app).listen(8443);

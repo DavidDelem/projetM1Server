@@ -64,7 +64,7 @@ module.exports = function(app) {
                                 callback();
                             }
                         }, function done() {
-                            var details = { nom: projet.nom, identifiant: projet.identifiant }
+                            var details = { email: req.user.email, nom: projet.nom, identifiant: projet.identifiant }
                             historiqueDAO.add('DELEGATION_INVITATION', projet.identifiant, details, function(response) {
                                 res.sendStatus(200);
                             });
